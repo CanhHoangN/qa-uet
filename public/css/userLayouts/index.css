@@ -38,17 +38,6 @@ body {
     padding: 15px;
 }
 
-.login-register {
-    padding: 20px;
-    color: #15a4fa;
-    text-align: center;
-}
-
-.login-register a {
-    text-decoration: none;
-    cursor: pointer;
-}
-
 .form-search {
     position: relative;
 }
@@ -369,13 +358,6 @@ p.user-badge {
 /*login
  */
 
-.qa-login {
-    position: fixed;
-    top: 15%;
-    left: 25%;
-    z-index: 1000;
-}
-
 .bg-cover {
     position: absolute;
     top: 0;
@@ -398,6 +380,27 @@ p.user-badge {
 .show-bg-cover {
     display: block;
     visibility: visible;
+}
+
+
+/* login*/
+
+.login-register {
+    padding: 20px;
+    color: #15a4fa;
+    text-align: center;
+}
+
+.login-register a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.qa-login {
+    position: fixed;
+    top: 15%;
+    left: 25%;
+    z-index: 1000;
 }
 
 input#email-login,
@@ -441,6 +444,31 @@ input[type="submit"] {
     padding: 9px 39px;
     border-radius: 5px;
     font-family: 'Poppins', sans-serif;
+}
+
+.login {
+    margin-top: 4%;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 15px;
+    padding-top: 60px;
+    padding-bottom: 25px;
+}
+
+a#sign-up-here {
+    background: #6dabe4;
+    padding: 3px 5px;
+    color: #FFFF;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a#login-here {
+    color: #6dabe4;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 h2#signup {
@@ -510,29 +538,11 @@ i.fa.fa-lock {
     font-family: 'Poppins', sans-serif;
 }
 
-.login {
-    margin-top: 4%;
-    background: #fff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    border-radius: 15px;
-    padding-top: 60px;
-    padding-bottom: 25px;
-}
-
 .link-to-register {
     /* padding: 0px; */
     margin-top: 3%;
     margin-left: 10%;
     padding: 5px;
-}
-
-a#sign-up-here {
-    background: #6dabe4;
-    padding: 3px 5px;
-    color: #FFFF;
-    font-family: 'Poppins', sans-serif;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 
@@ -541,13 +551,6 @@ a#sign-up-here {
 .link-to-login {
     /* padding: 0px; */
     padding: 10px;
-}
-
-a#login-here {
-    color: #6dabe4;
-    font-family: 'Poppins', sans-serif;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 .register {
@@ -599,7 +602,7 @@ a.dropdown-toggle:focus {
 
 .session-qa.col-md-4 {
     position: absolute;
-    top: 22%;
+    top: 10%;
     padding: 0px;
     left: 35%;
     background: #fff;
@@ -614,10 +617,25 @@ a.dropdown-toggle:focus {
 
 .session-qa-head {
     /* background: radial-gradient(black, transparent); */
-    background: #0b344c;
+    background: #2283bb;
     padding: 0;
     margin: 0;
     padding: 14px;
     text-align: center;
     color: white;
 }
+
+label#title {
+    width: 99%;
+}
+
+#form-session input[type='text'] {
+    margin-bottom: 10px;
+}
+
+select[name='type_survey'] {
+    margin-bottom: 10px;
+}
+
+
+/* css add session*

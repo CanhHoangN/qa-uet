@@ -1,0 +1,85 @@
+.login-register {
+    padding: 20px;
+    color: #15a4fa;
+    text-align: center;
+}
+
+.login-register a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.qa-login {
+    position: fixed;
+    top: 15%;
+    left: 25%;
+    z-index: 1000;
+}
+
+input#email-login,
+input#email-register,
+input#name {
+    background: none;
+    border: none;
+    outline: none;
+    width: 80%;
+    border-bottom: 1px solid #999;
+    padding: 2px 30px;
+    box-sizing: border-box;
+    margin-bottom: 6%;
+}
+
+.password {
+    position: relative;
+    margin-bottom: 5%;
+}
+
+input#password-login,
+input#password-register,
+input#repassword-register {
+    border: none;
+    outline: none;
+    background: none;
+    width: 80%;
+    border-bottom: 1px solid #999;
+    padding: 2px 30px;
+    box-sizing: border-box;
+    margin-bottom: 6%;
+}
+
+input[type="submit"] {
+    /* padding: 12px; */
+    display: inline-block;
+    background: #6dabe4;
+    color: #fff;
+    border-bottom: none;
+    width: auto;
+    padding: 9px 39px;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login {
+    margin-top: 4%;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 15px;
+    padding-top: 60px;
+    padding-bottom: 25px;
+}
+
+a#sign-up-here {
+    background: #6dabe4;
+    padding: 3px 5px;
+    color: #FFFF;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a#login-here {
+    color: #6dabe4;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+}

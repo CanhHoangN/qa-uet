@@ -18,6 +18,8 @@ Route::get('/',"PageController@index")->name('home');
 Auth::routes();
 
 
+// create session
+Route::post('/session',"PageController@createSession")->name('session');
 // Authentication Routes...
 Route::get('login', [
     'as' => 'login',

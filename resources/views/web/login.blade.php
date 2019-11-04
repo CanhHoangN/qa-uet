@@ -16,7 +16,11 @@
                         {{ session('error') }}
                     </div>
                 @endif
-                <div class="alert-danger"></div>
+                @if (session('NotLogin'))
+                    <div class="alert-danger">
+                        {{ session('NotLogin') }}
+                    </div>
+                @endif
                 <div class="email">
                     <label><i class="fa fa-envelope"></i></label>
                     <input type="email" placeholder="Your Email" name="email" id="email-login" required>

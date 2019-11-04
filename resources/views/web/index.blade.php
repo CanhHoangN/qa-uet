@@ -254,15 +254,27 @@
             <div class="display">
 
             </div>
+    
             <div class="session-qa col-md-4">
+
                     <div class="session-qa-head">
                         <h3>Tạo phiên hỏi đáp</h3>
                     </div>
-                    <form action="">
+                    <form id="form-session" style="padding:10px" action="{{route('session')}}" method="post">
                         @csrf
-                        <label id="title">Tiêu đề: <input class="form-control" type="text" name="name_survey" id="name_survey"></label><br>
-                        <label id="des">Mô tả: <input type="text" class="form-control" name="description"></label><br>
-                        <input type="submit" value="Tạo phiên">
+                        <p>Tiêu đề</p>
+                        <input class="form-control" type="text" name="name_survey" id="name_survey">
+                        <p>Chủ đề</p>
+                        <select name="type_survey" id="">
+                            <option value="business">business</option>
+                            <option value="technology">technology</option>
+                            <option value="marketing ">marketing </option>
+                            <option value="billionaire ">billionaire</option>
+                            <option value="question">Q&A</option>
+                        </select>
+                        <p>Mô tả</p>
+                        <textarea rows="9" cols="55" name="description" style="resize:none"></textarea>
+                        <input style="margin-top:10px" type="submit" value="Tạo phiên">
                     </form>
              </div>
     </div>
