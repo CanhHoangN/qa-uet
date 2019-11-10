@@ -23,16 +23,27 @@ class PageController extends Controller
             return redirect()->route('login')->with('NotLogin','Vui lòng đăng nhập trước khi tạo phiên hỏi đáp!');
         }
         else{
-            $data= ['name'=> $request->name_survey, 'type'=>$request->type_survey,'des'=>$request->description];
+
+            surveys::create([
+                'id_user'=>Auth::id(),
+                'name_survey'=>$request->name_survey,
+                'type_survey'=>$request->type_survey,
+                'description'=>$request->description,
+                'password'=>encrypt($request->password),
+            ]);
+           /* $data= ['name'=> $request->name_survey, 'type'=>$request->type_survey,'des'=>$request->description];
             $survey = new surveys();
             $survey->id_user="123";
             $survey->name_survey=$data['name'];
             $survey->type_survey=$data['type'];
             $survey->description=$data['des'];
-            $survey->save();
+            $survey->save();*/
             return redirect()->back();
         }
 
-        
+
+    }
+    public function session(Request $req,$id){
+        return view("web.session");
     }
 }

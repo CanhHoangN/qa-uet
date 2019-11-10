@@ -8,6 +8,7 @@ class surveys extends Model
 {
     //
     protected $table="surveys";
-    protected $primarykey="id_survey";
-    
+  //  protected $primarykey="id_survey";
+    protected $fillable = ['id_survey','id_user','name_survey','type_survey','date_survey','description','password',];
+
 }

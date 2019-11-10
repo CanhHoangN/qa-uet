@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="ask-question col-md-2">
                     <div class="btn-ask-question row">
-                        <button class="btn btn-primary" id="new_survey"><i style="margin-right: 5px" class="fas fa-plus"></i>ASK A QUESTION</button>
+                        <button class="btn btn-primary" id="new_survey"><i style="margin-right: 5px" class="fas fa-plus"></i>ASK A SESSION</button>
                     </div>
                     <div class="task-list row">
                         <ul>
@@ -83,19 +83,19 @@
                         <div class="box-question row">
                             <div class="col-md-8">
                                 <div class="content-box">
-                                    <strong>{{$su->name_survey}}</strong>
+                                    <strong><a href="{{route("detail_session",$su->id_survey)}}">{{$su->name_survey}}</a></strong>
                                     <p>{{$su->description}}</p>
                                 </div>
                                 <div class="related-content row">
                                     <ul class="question-tag">
-                                        <li><a href="#">business</a></li>
+                                        <li><a href="#">{{$su->type_survey}}</a></li>
                                     </ul>
                                 </div>
                                 <div class="user-post row">
                                     <img src="" alt="">
                                     <p>Dan choi </p>
                                     <p class="user-badge">Train </p>
-                                    <p>Asked on {{$su->created_at}} in Business </p>
+                                    <p>Asked on {{$su->created_at}} in {{$su->type_survey}} </p>
 
                                 </div>
                             </div>
@@ -109,7 +109,7 @@
                             </div>
                         </div>
                         @endforeach
-                        <!-- <div class="box-question row class-while">
+                         <div class="box-question row class-while">
                             <div class="col-md-8">
                                 <div class="content-box">
                                     <strong>What is business???</strong>
@@ -192,7 +192,7 @@
 
                                 </ul>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-2 detail-state">
@@ -262,25 +262,56 @@
             </div>
 
                 <div class="session-qa col-md-4">
-
                     <div class="session-qa-head">
                         <h3>Tạo phiên hỏi đáp</h3>
                     </div>
                     <form id="form-session" style="padding:10px" action="{{route('session')}}" method="post">
                         @csrf
-                        <p>Tiêu đề</p>
+                        <div class="row el-form">
+                            <div class="col-md-5"><strong>Tiêu đề phiên hỏi đáp(*)</strong></div>
+                            <div class="col-md-7"><input class="form-control" type="text" id="name-session" name="name_survey"></div>
+                        </div>
+                        <div class="row el-form">
+                                <div class="col-md-5"><strong>Mô tả phiên hỏi đáp(*)</strong></div>
+                                <div class="col-md-7">
+                                    <textarea name="description" id="des-session" rows="4"></textarea>
+                                </div>
+                        </div>
+                        <div class="row el-form">
+                            <div class="col-md-5"><strong>Chủ đề(*)</strong></div>
+                            <div class="col-md-7">
+                                    <select name="type_survey" id="">
+                                            <option value="business">business</option>
+                                            <option value="technology">technology</option>
+                                            <option value="marketing">marketing </option>
+                                            <option value="billionaire">billionaire</option>
+                                            <option value="Q&A">Q&A</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="row el-form">
+                                <div class="col-md-5"><strong>Mật khẩu tham gia</strong></div>
+                                <div class="col-md-7"><input class=form-control type="password" name="password" placeholder="Công khai: đễ trống"></div>
+                        </div>
+                        <div class="row">
+                             <div class="col-md-9"></div>
+                             <div class="col-md-3">
+                                    <input class="btn btn-primary" type="submit" value="Tạo phiên">
+                             </div>
+                        </div>
+                     <!--   <p>Tiêu đề</p>
                         <input class="form-control" type="text" name="name_survey" id="name_survey">
                         <p>Chủ đề</p>
                         <select name="type_survey" id="">
-                            <option value="1">business</option>
-                            <option value="2">technology</option>
-                            <option value="3 ">marketing </option>
-                            <option value="4 ">billionaire</option>
-                            <option value="5">Q&A</option>
+                            <option value="business">business</option>
+                            <option value="technology">technology</option>
+                            <option value="marketing">marketing </option>
+                            <option value="billionaire">billionaire</option>
+                            <option value="Q&A">Q&A</option>
                         </select>
                         <p>Mô tả</p>
                         <textarea rows="9" cols="55" name="description" style="resize:none"></textarea>
-                        <input style="margin-top:10px" type="submit" value="Tạo phiên">
+                        <input style="margin-top:10px" type="submit" value="Tạo phiên">-->
                     </form>
                 </div>
         </div>

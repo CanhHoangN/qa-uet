@@ -434,7 +434,7 @@ input#repassword-register {
     margin-bottom: 6%;
 }
 
-input[type="submit"] {
+.login input[type="submit"] {
     /* padding: 12px; */
     display: inline-block;
     background: #6dabe4;
@@ -597,6 +597,22 @@ a.dropdown-toggle:focus {
     color: white;
 }
 
+a#login:hover {
+    color: white;
+}
+
+a#register:hover {
+    color: white;
+}
+
+a#login:focus {
+    color: white;
+}
+
+a#register:focus {
+    color: white;
+}
+
 
 /*add sur_vey*/
 
@@ -635,6 +651,15 @@ label#title {
 
 select[name='type_survey'] {
     margin-bottom: 10px;
+}
+
+.row.el-form {
+    padding: 4px;
+    margin-bottom: 10px;
+}
+
+textarea#des-session {
+    width: 100%;
 }
 
 
