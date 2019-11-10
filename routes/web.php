@@ -17,7 +17,7 @@ Route::get('/',"PageController@index")->name('home');
 
 // session
 Route::get('qa/session/{id}',"PageController@session")->name("detail_session");
-
+Route::get('add/qa/{id}',"PageController@addQaToSession")->name("add_qa_session");
 Auth::routes();
 
 

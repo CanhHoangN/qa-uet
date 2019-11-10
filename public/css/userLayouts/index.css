@@ -657,10 +657,137 @@ select[name='type_survey'] {
     padding: 4px;
     margin-bottom: 10px;
 }
+.chairman-session.row {
+    margin: 0px;
+    margin-top: 3%;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
+}
 textarea#des-session {
     width: 100%;
 }
+img#profile {
+    width: 160px;
+    height: 160px;
+}
+ul.profile-session {
+    padding: 10px;
 
+    list-style: none;
+}
 
+li#title-session {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #17a2b8;
+}
+li#person-session{
+    color: grey;
+}
+
+li#time-session {
+    margin-top: 20px;
+    color: grey;
+}
+
+li#des-session {
+    margin-top: 14px;
+    color: grey;
+}
+ul.profile-session li i {
+    padding-right: 10px;
+}
+.col-md-3.search-question {
+    padding:0px;
+}
+
+.col-md-3.create-qa {
+    padding: 0px;
+}
+.list-qa-session {
+    margin-top: 4% !important;
+    box-shadow: 0 5px 3px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    padding-bottom: 60px;
+}
+
+.list-qa-survey.row {
+    margin: 0px;
+}
+.list-qa-survey.row select {
+    /* padding: 10px; */
+    height: 30px;
+}
+
+.list-qa-survey.row {
+    background: #5ba2ea;
+    padding: 15px 35px;
+    /* width: 97%; */
+}
+.search-create-qa.row {
+    margin: 0px;
+    margin-left: 3% !important;
+    /* padding: 13px; */
+}
+.list-qa-session {
+    background-color: #f5f5f5;
+}
+img#img-single-qa {
+    width: 75px;
+    /* height: 75px; */
+    padding-top: 1px;
+    /* border-top: red; */
+    /* border: 1px solid black; */
+    border-right: 1px solid black;
+}
+/* single qa*/
+.single-qa.row {
+
+    margin: auto;
+    margin-left: 3% !important;
+    width: 94%;
+
+    border: 1px solid #ca7070;
+    background: #fff;
+}
+
+.info-qa ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-qa {
+    margin-left: 20px;
+}
+.search-create-qa.row {
+    padding: 25px 0px;
+    width: 94%;
+}
+
+.col-md-3.create-qa {
+    /* float: right !important; */
+}
+
+.col-md-3.create-qa button {
+    float: right;
+}
+
+.search-create-qa.row {}
+span#post-by {
+    color: #4444c7;
+    margin-right: 5px;
+}
+
+span#amount-comment {
+    margin-right: 5px;
+    color: grey;
+}
+
+span#amount-like {
+    color: grey;
+}
+li#title-single-qa {
+    font-size: 20px;
+    color: red;
+}
 /* css add session*
