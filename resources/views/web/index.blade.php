@@ -17,6 +17,7 @@
                             <li><a href="#"><i class="fa fa-trophy"></i> Badges</a></li>
                             <li><a href="#"><i class="fa fa-th-list"></i> Categories</a></li>
                             <li><a href="#"><i class="fa fa-users"></i> Users</a></li>
+                            <li><a href="#"><i class="fas fa-poll-h"></i> Survey</a></li>
                         </ul>
                     </div>
                 </div>
