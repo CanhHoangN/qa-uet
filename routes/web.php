@@ -16,8 +16,11 @@ Route::get('/',"PageController@index")->name('home');
 
 
 // session
-Route::get('qa/session/{id}',"PageController@session")->name("detail_session");
-Route::get('add/qa/{id}',"PageController@addQaToSession")->name("add_qa_session");
+Route::get('qa/session/check/{id}',"PageController@showCheckPass")->name("check_pass");
+Route::get('qa/session/{id}',"PageController@showSession")->name("show_detail_session")->middleware('required_pass:id');
+Route::post('add/qa/{id}',"PageController@addQaToSession")->name("add_qa_session");
+Route::get('required/qa/{id}',"PageController@requiredPassword")->name('required_password');
+Route::post('post-password-required/{id}',"PageController@postRequiredPassword")->name("post_required_password");
 Auth::routes();
 
 

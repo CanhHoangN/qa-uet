@@ -83,7 +83,7 @@
                         <div class="box-question row">
                             <div class="col-md-8">
                                 <div class="content-box">
-                                    <strong><a href="{{route("detail_session",$su->id_survey)}}">{{$su->name_survey}}</a></strong>
+                                    <strong><a href="{{route("show_detail_session",$su->id_survey)}}">{{$su->name_survey}}</a></strong>
                                     <p>{{$su->description}}</p>
                                 </div>
                                 <div class="related-content row">

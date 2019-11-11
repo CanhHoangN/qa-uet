@@ -51,6 +51,7 @@ class LoginController extends Controller
         }
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password],$re)) {
             // The user is active, not suspended, and exists.
+            session()->forget('list');
             return redirect()->route('home');
         }else{
             return back()->withInput()->with('error',"Tài khoản hoặc mật khẩu không chính xác");
@@ -62,6 +63,7 @@ class LoginController extends Controller
          return view('web.login');
     }
     public function logout(){
+        session()->forget('list');
         Auth::logout();
 
         return redirect()->route("home");

@@ -7,11 +7,16 @@ use Egulias\EmailValidator\Exception\AtextAfterCFWS;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\surveys;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class PageController extends Controller
 {
+    public static $arr = array();
     public function index()
     {
+        $list_qa = array();
+        session()->push('list',-1);
         $amountUser = User::all()->count();
         $allsurvey= surveys::all();
         return view('web.index',compact('amountUser', 'allsurvey'));
@@ -24,39 +29,70 @@ class PageController extends Controller
             return redirect()->route('login')->with('NotLogin','Vui lòng đăng nhập trước khi tạo phiên hỏi đáp!');
         }
         else{
+            if(isset($request->password)){
+                surveys::create([
+                    'id_user'=>Auth::id(),
+                    'name_survey'=>$request->name_survey,
+                    'type_survey'=>$request->type_survey,
+                    'description'=>$request->description,
+                    'password'=>bcrypt($request->password),
+                ]);
+            }else{
+                surveys::create([
+                    'id_user'=>Auth::id(),
+                    'name_survey'=>$request->name_survey,
+                    'type_survey'=>$request->type_survey,
+                    'description'=>$request->description,
+                ]);
+            }
 
-            surveys::create([
-                'id_user'=>Auth::id(),
-                'name_survey'=>$request->name_survey,
-                'type_survey'=>$request->type_survey,
-                'description'=>$request->description,
-                'password'=>encrypt($request->password),
-            ]);
-           /* $data= ['name'=> $request->name_survey, 'type'=>$request->type_survey,'des'=>$request->description];
-            $survey = new surveys();
-            $survey->id_user="123";
-            $survey->name_survey=$data['name'];
-            $survey->type_survey=$data['type'];
-            $survey->description=$data['des'];
-            $survey->save();*/
             return redirect()->back();
         }
 
 
     }
-    public function session(Request $req,$id){
+    public function showSession($id){
+
         $survey = surveys::where("id_survey",$id)->get();
-        $list_qa = Question::all();
+        $list_qa = Question::where('id_survey',$id)->get();
         return view("web.session",compact("survey",'id','list_qa'));
+
+
+    }
+    public function showCheckPass($id){
+        return view('web.required');
     }
     public function addQaToSession(Request $request,$id){
         $id_user = Auth::id();
+        $person = $request->post_person;
+        $name = "";
+        if($person == "on"){
+            $name = "Hide";
+        }else{
+            $name = Auth::user()->name;
+        }
         Question::create([
             'id_survey'=>$id,
             'id_user'=>$id_user,
+            'whoposted'=>$name,
             'title_question'=>$request->title_question,
         ]);
         return redirect()->back();
 
+    }
+    public function requiredPassword(Request $request,$id){
+        return view('web.required',compact('id'));
+    }
+    public function postRequiredPassword(Request $request,$id){
+
+        $survey_password = surveys::where("id_survey",$id)->value('password');
+        if(Hash::check($request->required_password,$survey_password)){
+            self::$arr[] = $id;
+            session()->push('list',$id);
+           // Session::put('list_qa',$id);
+            return redirect()->route("show_detail_session",$id);
+        }else{
+            return redirect()->back()->with('error_required_password',"Key không đúng !");
+        }
     }
 }
