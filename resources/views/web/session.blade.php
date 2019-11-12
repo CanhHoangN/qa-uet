@@ -11,7 +11,7 @@
         <div class="col-md-6">
             <ul class="profile-session">
                 <li id="title-session"><i class="fa fa-check"></i>{{$survey[0]->name_survey}}</li>
-                <li id="person-session"><i class="fa fa-edit"></i>{{\Illuminate\Support\Facades\Auth::user()->name}}</li>
+                <li id="person-session"><i class="fa fa-edit"></i>{{$name = (DB::table('users')->where('id',$survey[0]->id_user))->value('name')}}</li>
                 <li id="des-session"><i class="far fa-sticky-note"></i>{{$survey[0]->description}}</li>
                 <li id="time-session"><i class="fa fa-history"></i>{{$survey[0]->created_at}}</li>
             </ul>

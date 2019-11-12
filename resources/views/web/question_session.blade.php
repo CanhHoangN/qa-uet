@@ -11,11 +11,12 @@
         <div class="col-md-6">
             <ul class="profile-session">
                 <li id="title-session"><i class="fa fa-check"></i>{{$survey[0]->name_survey}}</li>
-                <li id="person-session"><i class="fa fa-edit"></i>{{\Illuminate\Support\Facades\Auth::user()->name}}</li>
+                <li id="person-session"><i class="fa fa-edit"></i>{{$name = (DB::table('users')->where('id',$survey[0]->id_user))->value('name')}}</li>
                 <li id="des-session"><i class="far fa-sticky-note"></i>{{$survey[0]->description}}</li>
                 <li id="time-session"><i class="fa fa-history"></i>{{$survey[0]->created_at}}</li>
             </ul>
         </div>
+
     </div>
     <div class="box-questions">
         <div class="who-posted">
@@ -32,11 +33,15 @@
                         <p>Câu hỏi nè!</p>
                     </div>
                     <div class="quantity-like-question">
-                        <span style="color: #606670"><i style="color: rgb(32, 120, 244)" class="far fa-thumbs-up"></i> people like</span>
+                        <span style="color: #606670"><i style="color: rgb(32, 120, 244)" class="far fa-thumbs-up"></i> {{$like->count()}} people like</span>
                     </div>
                     <div class="like-comment-content-question row">
                         <div class="col-md-6 col-sm-6 like-question">
-                            <a href="#"><i class="far fa-thumbs-up"></i> like</a>
+                            @if((DB::table('like_question')->where('id_user',\Illuminate\Support\Facades\Auth::id()))->count() > 0)
+                                <a style="color: rgb(32, 120, 244)" href="{{route('un_like_question',$id_question)}}"><i class="far fa-thumbs-up"></i> like</a>
+                            @else
+                            <a href="{{route('like_question',$id_question)}}"><i class="far fa-thumbs-up"></i> like</a>
+                            @endif
                         </div>
                         <div class="col-md-6 col-sm-6 comment-question">
                             <a href="#"><i class="far fa-comment"></i> comment</a>

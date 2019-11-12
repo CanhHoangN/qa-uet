@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Comment;
 use App\Comment_in;
+use App\Like_question;
 use App\Question;
 use App\User;
 use Egulias\EmailValidator\Exception\AtextAfterCFWS;
@@ -57,7 +58,8 @@ class PageController extends Controller
 
         $survey = surveys::where("id_survey",$id)->get();
         $list_qa = Question::where('id_survey',$id)->get();
-        return view("web.session",compact("survey",'id','list_qa'));
+        $name = "";
+        return view("web.session",compact("survey",'id','list_qa','name'));
 
 
     }
@@ -101,7 +103,9 @@ class PageController extends Controller
         $survey = surveys::where("id_survey",$id)->get();
         $comments = Comment::where('id_question',$id_question)->get();
         $comments_in = Comment::where('id_question',$id_question)->get();
-        return view('web.question_session',compact('survey','id_question','comments','comments_in'));
+        $like = Like_question::where('id_question',$id_question)->get();
+        //dd($like[0]->id_user);
+        return view('web.question_session',compact('survey','id_question','comments','comments_in','like'));
     }
     public function addCommentToQuestion(Request $request,$id_question){
         Comment::create([
@@ -117,6 +121,20 @@ class PageController extends Controller
             'id_comment'=>$id_comment,
             'content'=>$request->comment_rep,
         ]);
+        return redirect()->back();
+    }
+    public function likeQuestion($id_question){
+        Like_question::create([
+            'id_question'=>$id_question,
+            'id_user'=>Auth::id(),
+            'name_user'=>Auth::user()->name,
+        ]);
+        return redirect()->back();
+    }
+    public function unlikeQuestion($id_question){
+        $like = Like_question::where('id_question',$id_question)->where('id_user',Auth::id());
+        $like->delete();
+
         return redirect()->back();
     }
 }
