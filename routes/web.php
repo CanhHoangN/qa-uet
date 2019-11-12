@@ -70,5 +70,3 @@ Route::post('register', [
     'as' => 'post_register',
     'uses' => 'Auth\RegisterController@register'
 ]);
-
-
