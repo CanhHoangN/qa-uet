@@ -23,7 +23,7 @@
             <h5>Đăng bởi: Thành viên ẩn danh</h5>
         </div>
         <div class="list-questions">
-            <a href="#">Trở về bảng câu hỏi</a>
+            <a  href="{{route('show_detail_session',$survey[0]->id_survey)}}">Trở về bảng câu hỏi</a>
             <div class="question">
                 <div class="content-question">
                     <div class="head-content-question">
