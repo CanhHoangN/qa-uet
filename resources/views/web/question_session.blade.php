@@ -37,7 +37,7 @@
                     </div>
                     <div class="like-comment-content-question row">
                         <div class="col-md-6 col-sm-6 like-question">
-                            @if((DB::table('like_question')->where('id_user',\Illuminate\Support\Facades\Auth::id()))->count() > 0)
+                            @if((DB::table('like_question')->where('id_user',\Illuminate\Support\Facades\Auth::id())->where('id_question',$id_question))->count() > 0)
                                 <a style="color: rgb(32, 120, 244)" href="{{route('un_like_question',$id_question)}}"><i class="far fa-thumbs-up"></i> like</a>
                             @else
                             <a href="{{route('like_question',$id_question)}}"><i class="far fa-thumbs-up"></i> like</a>
