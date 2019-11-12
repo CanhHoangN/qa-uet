@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Comment;
+use App\Comment_in;
 use App\Question;
 use App\User;
 use Egulias\EmailValidator\Exception\AtextAfterCFWS;
@@ -94,5 +96,27 @@ class PageController extends Controller
         }else{
             return redirect()->back()->with('error_required_password',"Key không đúng !");
         }
+    }
+    public function showQuestion($id,$id_question){
+        $survey = surveys::where("id_survey",$id)->get();
+        $comments = Comment::where('id_question',$id_question)->get();
+        $comments_in = Comment::where('id_question',$id_question)->get();
+        return view('web.question_session',compact('survey','id_question','comments','comments_in'));
+    }
+    public function addCommentToQuestion(Request $request,$id_question){
+        Comment::create([
+           'id_question'=>$id_question,
+           'id_user'=>Auth::id(),
+           'content'=>$request->comment_question,
+        ]);
+        return redirect()->back();
+    }
+    public function addCommentToComment(Request $request,$id_question,$id_comment){
+        Comment_in::create([
+            'id_user'=>Auth::id(),
+            'id_comment'=>$id_comment,
+            'content'=>$request->comment_rep,
+        ]);
+        return redirect()->back();
     }
 }
