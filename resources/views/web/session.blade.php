@@ -48,25 +48,13 @@
                             <li>chưa có câu trả lời</li>
                         </ul>
                         <span id="post-by">Đăng bởi: {{$qa->whoposted}}</span>
-                        <span id="amount-comment">Số câu trả lời:1</span>
-                        <span id="amount-like">1 lượt thích</span>
+                        <span id="amount-comment">Số câu trả lời: {{DB::table('comments')->where('id_question',$qa->id_question)->count()}}</span>
+                        <span id="amount-like">lượt thích: {{DB::table('like_question')->where('id_question',$qa->id_question)->count()}}</span>
                     </div>
 
                 </div>
             @endforeach
-            <div class="single-qa row" style="margin: 0">
-                <img id="img-single-qa" class="img-fluid" src="{{asset("images/web/unanswered-question.png")}}" alt="">
-                <div class="info-qa">
-                    <ul>
-                        <li id="title-single-qa"><a href="#" style="color:red">AAAAA</a></li>
-                        <li>chưa có câu trả lời</li>
-                    </ul>
-                    <span id="post-by">Đăng bởi: N\A</span>
-                    <span id="amount-comment">Số câu trả lời:1</span>
-                    <span id="amount-like">1 lượt thích</span>
-                </div>
 
-            </div>
         </div>
     </div>
 
