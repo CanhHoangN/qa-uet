@@ -17,11 +17,11 @@ Route::get('/',"PageController@index")->name('home');
 
 // session
 Route::get('qa/session/check/{id}',"PageController@showCheckPass")->name("check_pass");
-Route::get('qa/session/{id}',"PageController@showSession")->name("show_detail_session")->middleware('required_pass:id');
+Route::get('session/{id}',"PageController@showSession")->name("show_detail_session")->middleware('required_pass:id');
 Route::post('add/qa/{id}',"PageController@addQaToSession")->name("add_qa_session");
 Route::get('required/qa/{id}',"PageController@requiredPassword")->name('required_password');
 Route::post('post-password-required/{id}',"PageController@postRequiredPassword")->name("post_required_password");
-Route::get('qa/session/question/{id_question}/{id}',"PageController@showQuestion")->name("show_question");
+Route::get('session/question/{id_question}/{id}',"PageController@showQuestion")->name("show_question");
 Route::post('post/comment/{id_question}',"PageController@addCommentToQuestion")->name('add_comment');
 Route::post('post/comment/in/{id_question}/{id_comment}',"PageController@addCommentToComment")->name('add_comment_in_comment');
 Route::get('like/question/{id_question}',"PageController@likeQuestion")->name('like_question');

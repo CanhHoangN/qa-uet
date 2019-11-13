@@ -81,7 +81,11 @@
                     </div>
                     <div class="list-box-question">
                         @foreach($allsession as $su)
-                        <div class="box-question row">
+                        @if(($su->id_session % 2) != 0)
+                         <div style="background: #fff" class="box-question row">
+                        @else
+                        <div  class="box-question row">
+                        @endif
                             <div class="col-md-8">
                                 <div class="content-box">
                                     <strong><a href="{{route("show_detail_session",$su->id_session)}}">{{$su->name_session}}</a></strong>
@@ -103,9 +107,7 @@
                             <div class="col-md-4 view-question">
                                 <ul>
                                     <li>16 views</li>
-                                    <li>2 answers</li>
-                                    <li>0 votes</li>
-
+                                    <li>2 questions</li>
                                 </ul>
                             </div>
                         </div>

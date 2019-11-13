@@ -174,10 +174,10 @@ ul.state-question {
 }
 
 .box-question {
+    margin: 0px;
     border: 1px solid #dadfea;
-    border-top: none;
+    padding-top: 20px;
     width: 102.2%;
-    padding: 25px 3px;
     background: #fbfcff;
 }
 
@@ -187,8 +187,8 @@ ul.state-question {
 
 .view-question ul li {
     float: left;
-    width: 60px;
-    height: 60px;
+    width: 68px;
+    height: 67px;
     border: 1px solid #d9dfe9;
     border-radius: 50%;
     margin-top: 20px;
@@ -774,7 +774,7 @@ img#img-single-qa {
 
 .search-create-qa.row {}
 span#post-by {
-    color: #4444c7;
+    color: rgb(32, 120, 244);
     margin-right: 5px;
 }
 

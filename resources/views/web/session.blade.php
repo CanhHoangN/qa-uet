@@ -45,10 +45,14 @@
                     <div class="info-qa">
                         <ul>
                             <li id="title-single-qa"><a href="{{route("show_question",[$qa->id_session,$qa->id_question])}}" style="color:red">{{$qa->title_question}}</a></li>
-                            <li>chưa có câu trả lời</li>
+                            @if(($quantity_question = DB::table('comments')->where('id_question',$qa->id_question)->count()) > 0)
+                                <li style="color: rgb(32, 120, 244)">Hiện tại có {{$quantity_question}} câu hỏi.</li>
+                            @else
+                                <li style="color: rgb(32, 120, 244)">Hiện tại chưa có câu hỏi nào.</li>
+                            @endif
+
                         </ul>
                         <span id="post-by">Đăng bởi: {{$qa->whoposted}}</span>
-                        <span id="amount-comment">Số câu trả lời: {{DB::table('comments')->where('id_question',$qa->id_question)->count()}}</span>
                         <span id="amount-like">lượt thích: {{DB::table('like_question')->where('id_question',$qa->id_question)->count()}}</span>
                     </div>
 

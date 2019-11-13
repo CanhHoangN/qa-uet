@@ -59,7 +59,8 @@ class PageController extends Controller
         $session = Session_qa::where("id_session",$id)->get();
         $list_qa = Question::where('id_session',$id)->get();
         $name = "";
-        return view("web.session",compact("session",'id','list_qa','name'));
+        $quantity_question = 0;
+        return view("web.session",compact("session",'id','list_qa','name','quantity_question'));
 
 
     }
@@ -104,8 +105,9 @@ class PageController extends Controller
         $comments = Comment::where('id_question',$id_question)->get();
         $comments_in = Comment::where('id_question',$id_question)->get();
         $like = Like_question::where('id_question',$id_question)->get();
+        $question = Question::where('id_question',$id_question)->get();
         //dd($like[0]->id_user);
-        return view('web.question_session',compact('session','id_question','comments','comments_in','like'));
+        return view('web.question_session',compact('session','id_question','comments','comments_in','like','question'));
     }
     public function addCommentToQuestion(Request $request,$id_question){
         if(!Auth::check()){

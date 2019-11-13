@@ -20,7 +20,12 @@
     </div>
     <div class="box-questions">
         <div class="who-posted">
-            <h5>Đăng bởi: Thành viên ẩn danh</h5>
+            @if($question[0]->whoposted == "Hide")
+                <h5>Đăng bởi: Thành viên ẩn danh</h5>
+            @else
+                <h5>Đăng bởi: <a href="#">{{$question[0]->whoposted}}</a></h5>
+            @endif
+
         </div>
         <div class="list-questions">
             <a  href="{{route('show_detail_session',$session[0]->id_session)}}">Trở về bảng câu hỏi</a>
@@ -30,7 +35,7 @@
                         <h5>Nội dung câu hỏi</h5>
                     </div>
                     <div class="body-content-question">
-                        <p>Câu hỏi nè!</p>
+                        <p style="font-size: 18px">{{$question[0]->title_question}}</p>
                     </div>
                     <div class="quantity-like-question">
                         <span style="color: #606670"><i style="color: rgb(32, 120, 244)" class="far fa-thumbs-up"></i> {{$like->count()}} people like</span>
