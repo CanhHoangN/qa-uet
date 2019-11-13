@@ -9,7 +9,7 @@ use App\User;
 use Egulias\EmailValidator\Exception\AtextAfterCFWS;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\surveys;
+use App\Session_qa;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -21,8 +21,8 @@ class PageController extends Controller
         $list_qa = array();
         session()->push('list',-1);
         $amountUser = User::all()->count();
-        $allsurvey= surveys::all();
-        return view('web.index',compact('amountUser', 'allsurvey'));
+        $allsession= Session_qa::all();
+        return view('web.index',compact('amountUser', 'allsession'));
     }
 
     public function createSession(Request $request){
@@ -33,18 +33,18 @@ class PageController extends Controller
         }
         else{
             if(isset($request->password)){
-                surveys::create([
+                Session_qa::create([
                     'id_user'=>Auth::id(),
-                    'name_survey'=>$request->name_survey,
-                    'type_survey'=>$request->type_survey,
+                    'name_session'=>$request->name_session,
+                    'type_session'=>$request->type_session,
                     'description'=>$request->description,
                     'password'=>bcrypt($request->password),
                 ]);
             }else{
-                surveys::create([
+                Session_qa::create([
                     'id_user'=>Auth::id(),
-                    'name_survey'=>$request->name_survey,
-                    'type_survey'=>$request->type_survey,
+                    'name_session'=>$request->name_session,
+                    'type_session'=>$request->type_session,
                     'description'=>$request->description,
                 ]);
             }
@@ -56,10 +56,10 @@ class PageController extends Controller
     }
     public function showSession($id){
 
-        $survey = surveys::where("id_survey",$id)->get();
-        $list_qa = Question::where('id_survey',$id)->get();
+        $session = Session_qa::where("id_session",$id)->get();
+        $list_qa = Question::where('id_session',$id)->get();
         $name = "";
-        return view("web.session",compact("survey",'id','list_qa','name'));
+        return view("web.session",compact("session",'id','list_qa','name'));
 
 
     }
@@ -76,7 +76,7 @@ class PageController extends Controller
             $name = Auth::user()->name;
         }
         Question::create([
-            'id_survey'=>$id,
+            'id_session'=>$id,
             'id_user'=>$id_user,
             'whoposted'=>$name,
             'title_question'=>$request->title_question,
@@ -89,8 +89,8 @@ class PageController extends Controller
     }
     public function postRequiredPassword(Request $request,$id){
 
-        $survey_password = surveys::where("id_survey",$id)->value('password');
-        if(Hash::check($request->required_password,$survey_password)){
+        $session_password = Session_qa::where("id_session",$id)->value('password');
+        if(Hash::check($request->required_password,$session_password)){
             self::$arr[] = $id;
             session()->push('list',$id);
            // Session::put('list_qa',$id);
@@ -100,28 +100,39 @@ class PageController extends Controller
         }
     }
     public function showQuestion($id,$id_question){
-        $survey = surveys::where("id_survey",$id)->get();
+        $session = Session_qa::where("id_session",$id)->get();
         $comments = Comment::where('id_question',$id_question)->get();
         $comments_in = Comment::where('id_question',$id_question)->get();
         $like = Like_question::where('id_question',$id_question)->get();
         //dd($like[0]->id_user);
-        return view('web.question_session',compact('survey','id_question','comments','comments_in','like'));
+        return view('web.question_session',compact('session','id_question','comments','comments_in','like'));
     }
     public function addCommentToQuestion(Request $request,$id_question){
-        Comment::create([
-           'id_question'=>$id_question,
-           'id_user'=>Auth::id(),
-           'content'=>$request->comment_question,
-        ]);
-        return redirect()->back();
+        if(!Auth::check()){
+            return redirect()->route('login')->with('NotLogin_comment','Vui lòng đăng nhập trước khi tạo nhận xét!');
+        }else{
+            Comment::create([
+                'id_question'=>$id_question,
+                'id_user'=>Auth::id(),
+                'content'=>$request->comment_question,
+            ]);
+            return redirect()->back();
+        }
+
     }
     public function addCommentToComment(Request $request,$id_question,$id_comment){
-        Comment_in::create([
-            'id_user'=>Auth::id(),
-            'id_comment'=>$id_comment,
-            'content'=>$request->comment_rep,
-        ]);
-        return redirect()->back();
+        if(!Auth::check()){
+            return redirect()->route('login')->with('NotLogin_comment','Vui lòng đăng nhập trước khi tạo nhận xét!');
+        }else
+        {
+            Comment_in::create([
+                'id_user'=>Auth::id(),
+                'id_comment'=>$id_comment,
+                'content'=>$request->comment_rep,
+            ]);
+            return redirect()->back();
+        }
+
     }
     public function likeQuestion($id_question){
         Like_question::create([

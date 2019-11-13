@@ -10,18 +10,18 @@
         </div>
         <div class="col-md-6">
             <ul class="profile-session">
-                <li id="title-session"><i class="fa fa-check"></i>{{$survey[0]->name_survey}}</li>
-                <li id="person-session"><i class="fa fa-edit"></i>{{$name = (DB::table('users')->where('id',$survey[0]->id_user))->value('name')}}</li>
-                <li id="des-session"><i class="far fa-sticky-note"></i>{{$survey[0]->description}}</li>
-                <li id="time-session"><i class="fa fa-history"></i>{{$survey[0]->created_at}}</li>
+                <li id="title-session"><i class="fa fa-check"></i>{{$session[0]->name_session}}</li>
+                <li id="person-session"><i class="fa fa-edit"></i>{{$name = (DB::table('users')->where('id',$session[0]->id_user))->value('name')}}</li>
+                <li id="des-session"><i class="far fa-sticky-note"></i>{{$session[0]->description}}</li>
+                <li id="time-session"><i class="fa fa-history"></i>{{$session[0]->created_at}}</li>
             </ul>
         </div>
     </div>
     <div class="list-qa-session">
-        <div class="list-qa-survey row">
+        <div class="list-qa-session row">
             <select name="" id="">
                 <option value="question">Danh sách câu hỏi</option>
-                <option value="survey">Khảo sát ý kiến</option>
+                <option value="session">Khảo sát ý kiến</option>
             </select>
         </div>
 
@@ -44,7 +44,7 @@
                     <img id="img-single-qa" class="img-fluid" src="{{asset("images/web/unanswered-question.png")}}" alt="">
                     <div class="info-qa">
                         <ul>
-                            <li id="title-single-qa"><a href="{{route("show_question",[$qa->id_survey,$qa->id_question])}}" style="color:red">{{$qa->title_question}}</a></li>
+                            <li id="title-single-qa"><a href="{{route("show_question",[$qa->id_session,$qa->id_question])}}" style="color:red">{{$qa->title_question}}</a></li>
                             <li>chưa có câu trả lời</li>
                         </ul>
                         <span id="post-by">Đăng bởi: {{$qa->whoposted}}</span>

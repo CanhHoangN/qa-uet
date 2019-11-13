@@ -10,10 +10,10 @@
         </div>
         <div class="col-md-6">
             <ul class="profile-session">
-                <li id="title-session"><i class="fa fa-check"></i>{{$survey[0]->name_survey}}</li>
-                <li id="person-session"><i class="fa fa-edit"></i>{{$name = (DB::table('users')->where('id',$survey[0]->id_user))->value('name')}}</li>
-                <li id="des-session"><i class="far fa-sticky-note"></i>{{$survey[0]->description}}</li>
-                <li id="time-session"><i class="fa fa-history"></i>{{$survey[0]->created_at}}</li>
+                <li id="title-session"><i class="fa fa-check"></i>{{$session[0]->name_session}}</li>
+                <li id="person-session"><i class="fa fa-edit"></i>{{$name = (DB::table('users')->where('id',$session[0]->id_user))->value('name')}}</li>
+                <li id="des-session"><i class="far fa-sticky-note"></i>{{$session[0]->description}}</li>
+                <li id="time-session"><i class="fa fa-history"></i>{{$session[0]->created_at}}</li>
             </ul>
         </div>
 
@@ -23,7 +23,7 @@
             <h5>Đăng bởi: Thành viên ẩn danh</h5>
         </div>
         <div class="list-questions">
-            <a  href="{{route('show_detail_session',$survey[0]->id_survey)}}">Trở về bảng câu hỏi</a>
+            <a  href="{{route('show_detail_session',$session[0]->id_session)}}">Trở về bảng câu hỏi</a>
             <div class="question">
                 <div class="content-question">
                     <div class="head-content-question">

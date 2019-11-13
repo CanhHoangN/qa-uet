@@ -649,7 +649,7 @@ label#title {
     margin-bottom: 10px;
 }
 
-select[name='type_survey'] {
+select[name='type_session'] {
     margin-bottom: 10px;
 }
 
@@ -711,15 +711,15 @@ ul.profile-session li i {
     padding-bottom: 60px;
 }
 
-.list-qa-survey.row {
+.list-qa-session.row {
     margin: 0px;
 }
-.list-qa-survey.row select {
+.list-qa-session.row select {
     /* padding: 10px; */
     height: 30px;
 }
 
-.list-qa-survey.row {
+.list-qa-session.row {
     background: #5ba2ea;
     padding: 15px 35px;
     /* width: 97%; */

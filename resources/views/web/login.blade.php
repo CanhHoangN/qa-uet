@@ -21,6 +21,11 @@
                         {{ session('NotLogin') }}
                     </div>
                 @endif
+                @if (session('NotLogin_comment'))
+                    <div class="alert-danger">
+                        {{ session('NotLogin_comment') }}
+                    </div>
+                @endif
                 <div class="email">
                     <label><i class="fa fa-envelope"></i></label>
                     <input type="email" placeholder="Your Email" name="email" id="email-login" required>

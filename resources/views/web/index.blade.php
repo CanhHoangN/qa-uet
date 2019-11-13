@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="ask-question col-md-2">
                     <div class="btn-ask-question row">
-                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" id="new_survey"><i style="margin-right: 5px" class="fas fa-plus"></i>ASK A SESSION</button>
+                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" id="new_session"><i style="margin-right: 5px" class="fas fa-plus"></i>ASK A SESSION</button>
                     </div>
                     <div class="task-list row">
                         <ul>
@@ -17,7 +17,7 @@
                             <li><a href="#"><i class="fa fa-trophy"></i> Badges</a></li>
                             <li><a href="#"><i class="fa fa-th-list"></i> Categories</a></li>
                             <li><a href="#"><i class="fa fa-users"></i> Users</a></li>
-                            <li><a href="#"><i class="fas fa-poll-h"></i> Survey</a></li>
+                            <li><a href="#"><i class="fas fa-poll-h"></i> session</a></li>
                         </ul>
                     </div>
                 </div>
@@ -80,23 +80,23 @@
                         </div>
                     </div>
                     <div class="list-box-question">
-                        @foreach($allsurvey as $su)
+                        @foreach($allsession as $su)
                         <div class="box-question row">
                             <div class="col-md-8">
                                 <div class="content-box">
-                                    <strong><a href="{{route("show_detail_session",$su->id_survey)}}">{{$su->name_survey}}</a></strong>
+                                    <strong><a href="{{route("show_detail_session",$su->id_session)}}">{{$su->name_session}}</a></strong>
                                     <p>{{$su->description}}</p>
                                 </div>
                                 <div class="related-content row">
                                     <ul class="question-tag">
-                                        <li><a href="#">{{$su->type_survey}}</a></li>
+                                        <li><a href="#">{{$su->type_session}}</a></li>
                                     </ul>
                                 </div>
                                 <div class="user-post row">
                                     <img src="" alt="">
                                     <p>Dan choi </p>
                                     <p class="user-badge">Train </p>
-                                    <p>Asked on {{$su->created_at}} in {{$su->type_survey}} </p>
+                                    <p>Asked on {{$su->created_at}} in {{$su->type_session}} </p>
 
                                 </div>
                             </div>
@@ -272,7 +272,7 @@
                             @csrf
                             <div class="row el-form">
                                 <div class="col-md-5"><strong>Tiêu đề phiên hỏi đáp(*)</strong></div>
-                                <div class="col-md-7"><input class="form-control" type="text" id="name-session" name="name_survey"></div>
+                                <div class="col-md-7"><input class="form-control" type="text" id="name-session" name="name_session"></div>
                             </div>
                             <div class="row el-form">
                                 <div class="col-md-5"><strong>Mô tả phiên hỏi đáp(*)</strong></div>
@@ -283,7 +283,7 @@
                             <div class="row el-form">
                                 <div class="col-md-5"><strong>Chủ đề(*)</strong></div>
                                 <div class="col-md-7">
-                                    <select name="type_survey" id="">
+                                    <select name="type_session" id="">
                                         <option value="business">business</option>
                                         <option value="technology">technology</option>
                                         <option value="marketing">marketing </option>
@@ -311,7 +311,7 @@
     </div>
     <script>
         $(document).ready(function() {
-          /*  $('#new_survey').click(function(e) {
+          /*  $('#new_session').click(function(e) {
 
                 $('.bg-cover').addClass('show-bg-cover');
                 $('body').addClass('stop-scrolling');
