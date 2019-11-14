@@ -154,7 +154,7 @@ ul.state-question {
 }
 
 .filter-question {
-    width: 99%;
+    width: 100%;
 }
 
 .btn-ask-question.row {
@@ -384,7 +384,9 @@ p.user-badge {
 
 
 /* login*/
-
+.col-md-5.login-register a {
+    color: #bdcedc;
+}
 .login-register {
     padding: 20px;
     color: #15a4fa;
@@ -661,8 +663,7 @@ select[name='type_session'] {
     margin: 0px;
     margin-top: 3%;
     background: #fff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
+    /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); */
 }
 textarea#des-session {
     width: 100%;
@@ -707,7 +708,7 @@ ul.profile-session li i {
 }
 .list-qa-session {
     margin-top: 4% !important;
-    box-shadow: 0 5px 3px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    /* box-shadow: 0 5px 3px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); */
     padding-bottom: 60px;
 }
 
@@ -971,4 +972,16 @@ ul.like-comment-question li:nth-child(2) {
 ul.like-comment-question li:nth-child(2):hover {
     padding-bottom: 0;
     border-bottom: 1px solid #337ab7;
+}
+.box.row {
+    margin: 0px;
+}
+
+.list-box-question {
+    padding: 0px;
+    margin: 0px;
+    width: 102%;
+}
+p#created_at {
+    color: #337ab7;
 }

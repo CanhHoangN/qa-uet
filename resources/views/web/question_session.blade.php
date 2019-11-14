@@ -74,9 +74,9 @@
                                 <ul class="like-comment-question">
                                     <li class="like-comment-{{$comment->id_comment}}"><a href="#">Thích</a></li>
                                     @if(($comments_in=DB::table('comment_in')->where('id_comment',$comment->id_comment)->get())->count() == 0)
-                                        <li class="res-comment-{{$comment->id_comment}}">Trả lời</li>
+                                        <li  class="res-comment-{{$comment->id_comment}}">Trả lời</li>
                                     @else
-                                        <li class="res-comment-{{$comment->id_comment}}">Trả lời ({{$comments_in->count()}})</li>
+                                        <li  class="res-comment-{{$comment->id_comment}}">Trả lời ({{$comments_in->count()}})</li>
                                     @endif
                                 </ul>
                                 @foreach( $comments_in = DB::table('comment_in')->where('id_comment',$comment->id_comment)->get() as $cmt)

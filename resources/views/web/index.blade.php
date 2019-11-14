@@ -98,21 +98,21 @@
                                 </div>
                                 <div class="user-post row">
                                     <img src="" alt="">
-                                    <p>Dan choi </p>
+                                    <p id="chutoa">{{DB::table('users')->where('id',$su->id_user)->value('name')}}</p>
                                     <p class="user-badge">Train </p>
-                                    <p>Asked on {{$su->created_at}} in {{$su->type_session}} </p>
+                                    <p id="created_at">Asked on {{$su->created_at}} in {{$su->type_session}} </p>
 
                                 </div>
                             </div>
                             <div class="col-md-4 view-question">
-                                <ul>
+                              <!--  <ul>
                                     <li>16 views</li>
                                     <li>2 questions</li>
-                                </ul>
+                                </ul>-->
                             </div>
                         </div>
                         @endforeach
-                         <div class="box-question row class-while">
+                         <!--<div class="box-question row class-while">
                             <div class="col-md-8">
                                 <div class="content-box">
                                     <strong>What is business???</strong>
@@ -195,7 +195,7 @@
 
                                 </ul>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="col-md-2 detail-state">
@@ -299,6 +299,12 @@
                                 <div class="col-md-7"><input class=form-control type="password" name="password" placeholder="Công khai: đễ trống"></div>
                             </div>
                             <div class="row">
+                                <div class="col-md-5"><strong>Thời gian tồn tại</strong></div>
+                                <div class='col-sm-7'>
+                                    <input placeholder="Để trống: nếu muốn tồn tại đến khi xoá" type='text' class="form-control" id='datetimepicker4' name="time_session" />
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-9"></div>
                                 <div class="col-md-3">
                                     <input class="btn btn-primary" type="submit" value="Tạo phiên">
@@ -309,10 +315,24 @@
                 </div>
             </div>
         </div>
-
+        </div>
     </div>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker4').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm'
+            });
+        });
+    </script>
+
+
+
     <script>
         $(document).ready(function() {
+
+
           /*  $('#new_session').click(function(e) {
 
                 $('.bg-cover').addClass('show-bg-cover');

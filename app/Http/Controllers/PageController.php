@@ -39,6 +39,7 @@ class PageController extends Controller
                     'type_session'=>$request->type_session,
                     'description'=>$request->description,
                     'password'=>bcrypt($request->password),
+                    'expired_at'=>$request->time_session,
                 ]);
             }else{
                 Session_qa::create([
@@ -46,6 +47,7 @@ class PageController extends Controller
                     'name_session'=>$request->name_session,
                     'type_session'=>$request->type_session,
                     'description'=>$request->description,
+                    'expired_at'=>$request->time_session,
                 ]);
             }
 
@@ -68,21 +70,26 @@ class PageController extends Controller
         return view('web.required');
     }
     public function addQaToSession(Request $request,$id){
-        $id_user = Auth::id();
-        $person = $request->post_person;
-        $name = "";
-        if($person == "on"){
-            $name = "Hide";
+        if(!Auth::check()){
+            return redirect()->route('login')->with('NotLogin_question','Vui lòng đăng nhập trước khi đặt câu hỏi!');
         }else{
-            $name = Auth::user()->name;
+            $id_user = Auth::id();
+            $person = $request->post_person;
+            $name = "";
+            if($person == "on"){
+                $name = "Hide";
+            }else{
+                $name = Auth::user()->name;
+            }
+            Question::create([
+                'id_session'=>$id,
+                'id_user'=>$id_user,
+                'whoposted'=>$name,
+                'title_question'=>$request->title_question,
+            ]);
+            return redirect()->back();
         }
-        Question::create([
-            'id_session'=>$id,
-            'id_user'=>$id_user,
-            'whoposted'=>$name,
-            'title_question'=>$request->title_question,
-        ]);
-        return redirect()->back();
+
 
     }
     public function requiredPassword(Request $request,$id){
