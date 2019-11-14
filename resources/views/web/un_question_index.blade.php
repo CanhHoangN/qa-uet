@@ -1,5 +1,7 @@
 @extends('web.index_mater')
 @section('list-box-question')
+    @extends('web.index_mater')
+@section('list-box-question')
     <div class="list-box-question">
         @foreach($allsession as $su)
             @if(($su->id_session % 2) != 0)
@@ -36,4 +38,6 @@
 
                 </div>
     </div>
+@stop
+
 @stop

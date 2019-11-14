@@ -10,6 +10,7 @@ use Egulias\EmailValidator\Exception\AtextAfterCFWS;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Session_qa;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -24,7 +25,18 @@ class PageController extends Controller
         $allsession= Session_qa::all();
         return view('web.index',compact('amountUser', 'allsession'));
     }
+    public function showSessionUnQuestion(){
+        $amountUser = User::all()->count();
+        $allsession = DB::table('sessions')
+            ->whereNotExists(function ($query) {
+                $query->select('*')
+                    ->from('questions')
+                    ->whereRaw('sessions.id_session = questions.id_session');
+            })
+            ->get();
 
+        return view('web.index',compact('amountUser', 'allsession'));
+    }
     public function createSession(Request $request){
 
 

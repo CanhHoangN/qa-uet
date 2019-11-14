@@ -16,6 +16,7 @@ Route::get('/',"PageController@index")->name('home');
 
 
 // session
+Route::get('session/un-question',"PageController@showSessionUnQuestion")->name('un_question');
 Route::get('qa/session/check/{id}',"PageController@showCheckPass")->name("check_pass");
 Route::get('session/{id}',"PageController@showSession")->name("show_detail_session")->middleware('required_pass:id');
 Route::post('add/qa/{id}',"PageController@addQaToSession")->name("add_qa_session");
