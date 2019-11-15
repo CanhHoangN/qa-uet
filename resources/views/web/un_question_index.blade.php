@@ -1,6 +1,4 @@
-@extends('web.index_mater')
-@section('list-box-question')
-    @extends('web.index_mater')
+@extends('web.index_master')
 @section('list-box-question')
     <div class="list-box-question">
         @foreach($allsession as $su)

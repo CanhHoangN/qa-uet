@@ -14,6 +14,11 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    /*    view()->composer('web.master', function ($view) {
+            $product = type_products::all();
+            $cart = Cart::where('id_user','=',Auth::id())->get();
+            $view->with(['prod'=>$product,'cart'=>$cart]);
+        });*/
     }
 
     /**

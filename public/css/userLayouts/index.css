@@ -1,11 +1,147 @@
 body {
     font-family: 'Lato', sans-serif;
 }
-
-.body-qa {
-    z-index: -99;
+.task-list.row {
+    border: 1px solid #edf0f7;
+}.task-list.row {}
+/* user profile*/
+.footer-profile.row {
+    border: 1px solid #d8d8d8;
+}
+ul.list-point {
+    padding: 0px;
+    list-style: none;
 }
 
+ul.list-footer {
+    padding: 0px;
+    list-style: none;
+}
+
+ul.list-footer li {
+    float: left;
+    padding: 15px 10px 5px 10px;
+    /* border-bottom: 2px solid; */
+}
+ul.list-footer li a {
+    color: #8c97b2;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 3px solid #f39c12;
+}
+ul.list-point > li {
+    margin-bottom: 20px;
+    border-left: 4px solid #78829d;
+    color: #78829d !important;
+    font-size: 13px;
+    border-left: 4px solid #78829d;
+    padding: 0;
+    padding-left: 5px;
+    height: 60px;
+}
+ul#ul-point-1 {
+    list-style: none;
+    padding: 0px;
+}
+ul#ul-point-2 {
+    list-style: none;
+    padding: 0px;
+}
+li#question-point {
+    font-size: 15px;
+}
+
+li#point-question {
+    font-size: 35px;
+}
+
+li#answer-point {
+    font-size: 15px;
+}
+
+li#point-answer {
+    font-size: 35px;
+}
+.head-profile.row h3 {
+    color: #2c3e50;
+    font-family:'Lato', sans-serif;
+}
+
+li#name_profile {
+    font-size: 20px;
+}
+
+img.img-avatar {
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+}
+.col-md-8.col-sm-8.profile-left.row {
+    margin: 0px;
+}
+
+ul.list-info {
+    margin-left: 20px;
+}
+
+ul.list-info li {
+    font-family: 'Lato', sans-serif;
+    padding: 5px;
+}
+.head-profile.row {
+    padding: 5px 25px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.body-profile.row {
+
+    padding: 50px 30px;
+    background: #fbfcff;
+}
+
+ul.list-info {
+    padding: 0px;
+    margin-left: 15px;
+    list-style: none;
+}
+
+.col-md-8.col-sm-8.profile-left.row {
+    margin: 0px;
+}
+.col-md-8.col-sm-8.profile-left {
+    /* float: left; */
+}
+ul#list-menu-user {
+    padding: 0px;
+    margin: 0px;
+}
+.dropdown-menu > li > a:hover {
+    background-color: #303a54!important;
+}
+
+ul#list-menu-user li {
+    background: #303a54;
+    border-bottom: 1px solid #fff;
+    /* color: #78829d; */
+    /* padding: 1; */
+}
+
+ul#list-menu-user li a {
+    color: #fff !important;
+    padding: 10px;
+}
+
+ul#list-menu-user li {
+}
+
+ul#list-menu-user {
+    padding: 0px;
+}
+
+ul#list-menu-user li:hover{
+    background: #303a54 !important;
+}
 .btn-primary {
     color: #fff;
     background-color: #3498db;
@@ -156,8 +292,13 @@ ul.state-question {
 .filter-question {
     width: 100%;
 }
-
-.btn-ask-question.row {
+img#avatar_default {
+    height: 35px;
+    width: 35px;
+    border-radius: 20px;
+    margin-left: 10px;
+}
+.btn-ask-question {
     padding: 34px;
     height: 120px;
     box-sizing: border-box;
@@ -231,7 +372,7 @@ p.user-badge {
     color: #FFF;
 }
 
-.task-list.row ul {
+.task-list ul {
     list-style: none;
     padding: 0 15px;
     width: 100%;
@@ -253,6 +394,7 @@ p.user-badge {
 }
 
 .task-list ul li:hover {
+
     background-color: #b6c5cc;
     color: #FFFFFF;
     border-left: 5px solid orange;
@@ -385,7 +527,7 @@ p.user-badge {
 
 /* login*/
 .col-md-5.login-register a {
-    color: #bdcedc;
+    color: #fff;
 }
 .login-register {
     padding: 20px;
@@ -983,5 +1125,5 @@ ul.like-comment-question li:nth-child(2):hover {
     width: 102%;
 }
 p#created_at {
-    color: #337ab7;
+    color: #141e27;
 }

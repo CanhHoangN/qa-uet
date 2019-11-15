@@ -37,8 +37,9 @@
                         @if(Auth::check())
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{Auth::user()->name}}</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{route('logout')}}">Logout</a></li>
+                                    <ul id="list-menu-user" class="dropdown-menu">
+                                        <li><a href="{{route('profile_user',\Illuminate\Support\Facades\Auth::id())}}"><i class="far fa-user"></i> User Profile</a></li>
+                                        <li><a href="{{route('logout')}}"><i class="fas fa-chevron-right"></i> Logout</a></li>
                                     </ul>
                                 </div>
                         @else

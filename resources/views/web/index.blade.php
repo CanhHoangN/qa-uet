@@ -1,5 +1,61 @@
-@extends('web.index_mater')
+@extends('web.index_master')
 @section('list-box-question')
+    <div class="filter-question">
+        <div class="row up-filter">
+            <div class="col-md-4">
+                <h3>All Questions</h3>
+            </div>
+            <div class="col-md-8 filter">
+                <div class="el-filter">
+                    <label>Filter by</label>
+                    <label id="category">
+                        <select class="form-control" id="sel1" name="sellist1">
+                            <option>Select Categories</option>
+                            <option>Accessories</option>
+                            <option>Accounting</option>
+                            <option>Advice</option>
+                            <option>Arts</option>
+                        </select>
+                    </label>
+                    <label id="all">
+                        <select class="form-control" id="sel2" name="sellist2">
+                            <option>All</option>
+                            <option>Poll</option>
+                            <option>Normal</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row down-amount">
+            <div class="col-md-4 state-question-pre">
+                <ul class="state-question">
+                    <li><a href="{{route('home')}}">Latest</a></li>
+                    <li><a href="#">Votes</a></li>
+                    <li><a href="{{route('un_question')}}">Un-question</a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-8 amount-question">
+                <div class="el-amount-question">
+                    <label>Questions Per Page: </label>
+                    <label id="amount">
+                        <form action="#">
+                            <div class="form-group">
+                                <select class="form-control" id="sel3" name="sellist3">
+                                    <option>12</option>
+                                    <option>15</option>
+                                    <option>20</option>
+                                </select>
+                            </div>
+                            <!--  <button type="submit" class="btn btn-primary">Submit</button>-->
+                        </form>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <div class="list-box-question">
         @foreach($allsession as $su)
             @if(($su->id_session % 2) != 0)
@@ -9,7 +65,7 @@
                             @endif
                             <div class="col-md-8">
                                 <div class="content-box">
-                                    <strong><a href="{{route("show_detail_session",$su->id_session)}}">{{$su->name_session}}</a></strong>
+                                    <strong id="title-sesison"><a href="{{route("show_detail_session",$su->id_session)}}">{{$su->name_session}}</a></strong>
                                     <p>{{$su->description}}</p>
                                 </div>
                                 <div class="related-content row">
@@ -18,10 +74,10 @@
                                     </ul>
                                 </div>
                                 <div class="user-post row">
-                                    <img src="" alt="">
-                                    <p id="chutoa">{{DB::table('users')->where('id',$su->id_user)->value('name')}}</p>
-                                    <p class="user-badge">Train </p>
-                                    <p id="created_at">Asked on {{$su->created_at}} in {{$su->type_session}} </p>
+                                    <img  id="avatar_default" src="{{asset('images/web/avatar_default.png')}}" alt="">
+                                    <p id="chutoa"><strong>Chairman: </strong>{{DB::table('users')->where('id',$su->id_user)->value('name')}}</p>
+                                  <!--  <p class="user-badge">Train </p>-->
+                                    <p id="created_at">Asked on {{$su->created_at}} in <a href="#">{{$su->type_session}}</a> </p>
 
                                 </div>
                             </div>
@@ -33,7 +89,5 @@
                             </div>
                         </div>
                         @endforeach
-
-                </div>
     </div>
 @stop
