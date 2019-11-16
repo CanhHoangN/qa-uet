@@ -21,9 +21,15 @@
                         {{ session('NotLogin') }}
                     </div>
                 @endif
+
                 @if (session('NotLogin_comment'))
                     <div class="alert-danger">
                         {{ session('NotLogin_comment') }}
+                    </div>
+                @endif
+                @if (session('NotLogin_survey'))
+                    <div class="alert-danger">
+                        {{ session('NotLogin_survey') }}
                     </div>
                 @endif
                 @if (session('NotLogin_question'))

@@ -21,12 +21,18 @@ class PageController extends Controller
     {
         $list_qa = array();
         session()->push('list',-1);
-        $type_sessions = DB::table('sessions')
-            ->select('type_session', DB::raw('count(*) as total'))
-            ->groupBy('type_session')->get();
-        $amountUser = User::all()->count();
         $allsession= Session_qa::all();
-        return view('web.index',compact('amountUser', 'allsession','type_sessions'));
+       /* $type_sessions = DB::table('sessions')
+            ->select('type_session', DB::raw('count(*) as total'))
+            ->groupBy('type_session')->get();*
+
+        $amountUser = User::all()->count();
+
+
+        $count_session = $allsession->count();*/
+        //dd($question);
+
+        return view('web.index',compact('allsession'));
     }
     public function showSessionUnQuestion(){
         $amountUser = User::all()->count();
@@ -176,14 +182,11 @@ class PageController extends Controller
         return redirect()->back();
     }
     public function profileUser($id){
-        $type_sessions = DB::table('sessions')
-            ->select('type_session', DB::raw('count(*) as total'))
-            ->groupBy('type_session')->get();
-        $amountUser = User::all()->count();
+
         $allsession= Session_qa::where('id_user',$id)->get();
         $user = User::where('id',$id)->get();
 
-        return view('web.user_profile',compact('type_sessions','amountUser','allsession','user'));
+        return view('web.user_profile',compact('allsession','user'));
     }
     public function deleteSession($id_session){
         Session_qa::where('id_session',$id_session)->delete();

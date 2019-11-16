@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Session_qa;
+use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,11 +17,17 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
-    /*    view()->composer('web.master', function ($view) {
-            $product = type_products::all();
-            $cart = Cart::where('id_user','=',Auth::id())->get();
-            $view->with(['prod'=>$product,'cart'=>$cart]);
-        });*/
+        view()->composer('web.index_master', function ($view) {
+            $type_sessions = DB::table('sessions')
+                ->select('type_session', DB::raw('count(*) as total'))
+                ->groupBy('type_session')->get();
+
+            $amountUser = User::all()->count();
+            $allsession= Session_qa::all();
+
+            $count_session = $allsession->count();
+            $view->with(['type_sessions'=>$type_sessions,'allsession'=>$allsession,'count_session'=>$count_session,'amountUser'=>$amountUser]);
+        });
     }
 
     /**

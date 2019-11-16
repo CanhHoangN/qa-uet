@@ -7,8 +7,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="ask-question col-md-2">
+
                 <div class="btn-ask-question row">
-                    <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" id="new_session"><i style="margin-right: 5px" class="fas fa-plus"></i>CREATE A SESSION</button>
+
+                    <div class="btn-group">
+                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"><i class="fas fa-plus" style="margin-right: 3px"></i>Session</button>
+                        <button data-toggle="modal" data-target="#exampleModal1" type="button" class="btn btn-primary"><i class="fas fa-plus" style="margin-right: 3px"></i>Survey</button>
+                    </div>
+
                 </div>
                 <div class="task-list row">
                     <ul>
@@ -27,8 +33,8 @@
             </div>
             <div class="col-md-2 detail-state">
                 <div class="total-question">
-                    <p>Questions</p>
-                    <strong>18</strong>
+                    <p>Sessions</p>
+                    <strong>{{$count_session}}</strong>
                 </div>
                 <div class="total-member">
                     <p>Members</p>
@@ -126,7 +132,50 @@
                             <div class="row">
                                 <div class="col-md-9"></div>
                                 <div class="col-md-3">
-                                    <input class="btn btn-primary" type="submit" value="Tạo phiên">
+                                    <input name="session" class="btn btn-primary" type="submit" value="Tạo phiên">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel1">Tạo phiên khảo sát</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-session" style="padding:10px" action="{{route('session')}}" method="post">
+                            @csrf
+                            <div class="row el-form">
+                                <div class="col-md-5"><strong>Chủ đề khảo sát(*)</strong></div>
+                                <div class="col-md-7"><input class="form-control" type="text" id="name-session" name="title_survey"></div>
+                            </div>
+                            <div class="row el-form">
+                                <div class="col-md-5"><strong>Mô tả khảo sát(*)</strong></div>
+                                <div class="col-md-7">
+                                    <textarea name="description" id="des-session" rows="4"></textarea>
+                                </div>
+                            </div>
+                            <div class="row el-form">
+                                <div class="col-md-5"><strong>Mật khẩu tham gia</strong></div>
+                                <div class="col-md-7"><input class=form-control type="password" name="password_survey" placeholder="Công khai: đễ trống"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5"><strong>Thời gian tồn tại</strong></div>
+                                <div class='col-sm-7'>
+                                    <input placeholder="Để trống: nếu muốn tồn tại đến khi xoá" type='text' class="form-control" id='datetimepicker4' name="time_survey" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9"></div>
+                                <div class="col-md-3">
+                                    <input name="survey" class="btn btn-primary" type="submit" value="Tạo khảo sát">
                                 </div>
                             </div>
                         </form>

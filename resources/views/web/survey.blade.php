@@ -31,7 +31,7 @@
             <div class="col-md-4 state-question-pre">
                 <ul class="state-question">
                     <li><a href="{{route('home')}}">Session</a></li>
-                    <li><a href="{{route('survey')}}">Survey</a></li>
+                    <li><a href="#">Survey</a></li>
                     <li><a href="{{route('un_question')}}">Un-question</a></li>
 
                 </ul>
@@ -57,7 +57,7 @@
         </div>
     </div>
     <div class="list-box-question">
-        @foreach($allsession as $su)
+        @foreach($allsurvey as $su)
             @if(($su->id_session % 2) != 0)
                 <div style="background: #fff" class="box-question row">
                     @else
@@ -65,52 +65,49 @@
                             @endif
                             <div class="col-md-8">
                                 <div class="content-box">
-                                    <strong id="title-sesison"><a href="{{route("show_detail_session",$su->id_session)}}">{{$su->name_session}}</a></strong>
+                                    <strong id="title-sesison"><a href="{{route('handle.survey',$su->id)}}">{{$su->title}}</a></strong>
                                     <p>{{$su->description}}</p>
                                 </div>
                                 <div class="related-content row">
                                     <ul class="question-tag">
-                                        <li><a href="#">{{$su->type_session}}</a></li>
+                                        <li><a href="#">aas</a></li>
                                     </ul>
                                 </div>
                                 <div class="user-post row">
                                     <img  id="avatar_default" src="{{asset('images/web/avatar_default.png')}}" alt="">
-                                    <p id="chutoa"><strong>Chairman: </strong>{{DB::table('users')->where('id',$su->id_user)->value('name')}}</p>
-                                  <!--  <p class="user-badge">Train </p>-->
-                                    <p id="created_at">Asked on {{$su->created_at}} in <a href="#">{{$su->type_session}}</a> </p>
+                                    <p id="chutoa"><strong>Chairman: </strong>{{DB::table('users')->where('id',$su->user_id)->value('name')}}</p>
+                                    <!--  <p class="user-badge">Train </p>-->
+                                    <p id="created_at">Asked on {{$su->created_at}} in <a href="#">aaaa</a> </p>
 
                                 </div>
                             </div>
                             <div class="col-md-4 view-question">
-                                  <ul class="ul-info">
-                                      <li class="session-views">
-                                          <ul>
-                                              <li id="views">
+                                <ul class="ul-info">
+                                    <li class="session-views">
+                                        <ul>
+                                            <li id="views">
                                                 20
-                                              </li>
-                                              <li class="text-li-info">views</li>
-                                          </ul>
-                                      </li>
-                                      <li class="session-questions">
-                                          <ul>
-                                              <li id="questions">{{DB::table('questions')
-                                                      ->select(DB::raw('count(*) as total'))
-                                                      ->where('id_session',$su->id_session)
-                                                      ->value('total')}}
-                                              </li>
-                                              <li class="text-li-info">questions</li>
-                                          </ul>
-                                      </li>
-                                      <li class="session-vote">
-                                          <ul>
-                                              <li id="votes">25</li>
-                                              <li class="text-li-info">votes</li>
-                                          </ul>
-                                      </li>
+                                            </li>
+                                            <li class="text-li-info">views</li>
+                                        </ul>
+                                    </li>
+                                    <li class="session-questions">
+                                        <ul>
+                                            <li id="questions">
+                                            </li>
+                                            <li class="text-li-info">questions</li>
+                                        </ul>
+                                    </li>
+                                    <li class="session-vote">
+                                        <ul>
+                                            <li id="votes">25</li>
+                                            <li class="text-li-info">votes</li>
+                                        </ul>
+                                    </li>
 
-                                  </ul>
+                                </ul>
                             </div>
                         </div>
-        @endforeach
-    </div>
+                        @endforeach
+                </div>
 @stop
