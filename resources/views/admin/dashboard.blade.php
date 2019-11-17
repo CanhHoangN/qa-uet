@@ -24,26 +24,26 @@
                 <div class="widget-content" >
                     <div class="row-fluid">
                         <div class="span9">
-                                <img src="{{asset('images/backend_images/syllabus.jpg')}}" alt="syllabus">
+                                <img src="{{asset('images/backend_images/qa.png')}}" alt="q&a">
                         </div>
                         <div class="span3">
                             <ul class="site-stats">
                                 <li class="bg_lh"><i class="icon-user"></i> {{$totalUsers}}</strong> <small>Users</small></li>
                             </ul>
                             <ul class="site-stats">
-                                <li class="bg_lh"><i class="fab fa-accusoft"></i>{{$totalTemps}}</strong> <small>Templates</small></li>
+                                <li class="bg_lh"><i class="fab fa-accusoft"></i>{{$totalSessions}}</strong> <small>Sessions</small></li>
                             </ul>
                             <ul class="site-stats">
-                                <li class="bg_lh"><i class="fas fa-level-up-alt"></i>{{$totalLevels}}</strong> <small>Levels </small></li>
+                                <li class="bg_lh"><i class="fas fa-level-up-alt"></i>{{$totalSurveys}}</strong> <small>Surveys</small></li>
                             </ul>
                             <ul class="site-stats">
-                                <li class="bg_lh"><i class="fas fa-angle-double-right"></i>{{$totalMethods}}</strong> <small>Methods </small></li>
+                                <li class="bg_lh"><i class="fas fa-angle-double-right"></i>{{$totalQuestions}}</strong> <small>Questions</small></li>
                             </ul>
                             <ul class="site-stats">
-                                <li class="bg_lh"><i class="fas fa-align-left"></i>{{$totalSuggests}}</strong> <small>Suggests </small></li>
+                                <li class="bg_lh"><i class="fas fa-align-left"></i>{{$totalComments}}</strong> <small>Comments</small></li>
                             </ul>
                             <ul class="site-stats">
-                                <li class="bg_lh"><i class="fas fa-book"></i>{{$totalSyllabus}}</strong> <small>Syllabus </small></li>
+                                <li class="bg_lh"><i class="fas fa-book"></i>{{$totalAnswers}}</strong> <small>Answers Surveys</small></li>
                             </ul>
                         </div>
                     </div>

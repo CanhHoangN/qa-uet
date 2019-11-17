@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Survey extends Model
 {
     //
+    protected $primaryKey = "id";
     protected $fillable = ['title', 'description', 'user_id'];
     protected $dates = ['deleted_at'];
     protected $table = 'survey';

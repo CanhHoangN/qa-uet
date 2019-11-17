@@ -104,40 +104,20 @@ Route::group(['middleware' => ['auth']], function ()
     Route::get('/admin/settings', 'AdminController@settings');
     Route::get('/admin/check-pwd', 'AdminController@checkPassword');
     Route::match(['get', 'post'], '/admin/update-pwd', 'AdminController@updatePassword');
-    //session language
-    Route::get('/lg', function(){
-        Session::put('lg', 'vi');
-        echo "put session language ok!";
-        if(Session::has('lg'))
-        {
-            echo Session::get("lg");
-        }
-    });
-    Route::get('/admin/language/{lg}', 'AdminController@language');
+  
     //new
-    Route::match(['get', 'post'], '/admin/descLevels', 'AdminController@descLevels');
-    Route::get('/admin/descLevels/edit/{id}', 'AdminController@editDL');
-    Route::post('/admin/descLevels/edited/{id}', 'AdminController@editedDL');
+    Route::match(['get', 'post'], '/admin/sessions', 'AdminController@getSessions');
+    Route::get('/admin/sessions/delete/{id}', 'AdminController@deleteSession');
 
-    Route::match(['get', 'post'], '/admin/suggest/{idTemplate}', 'AdminController@suggest');
-    Route::get('/admin/editSuggest/{idTemp}/{idLV}', 'AdminController@editSG');
-    Route::post('/admin/editedSuggest/{idTemp}/{idLV}', 'AdminController@editedSG');
-
-    Route::match(['get', 'post'], '/admin/methods', 'AdminController@methods');
-    Route::get('/admin/methods/edit/{id}', 'AdminController@editMT');
-    Route::post('/admin/methods/edited/{id}', 'AdminController@editedMT');
+    Route::match(['get', 'post'], '/admin/surveys', 'AdminController@getSurveys');
+    Route::get('/admin/surveys/delete/{id}', 'AdminController@deleteSurvey');
 
     Route::match(['get', 'post'], '/admin/customers', 'AdminController@customers');
     Route::post('/admin/listCustomer', 'AdminController@listCustomer');
-    Route::get('/admin/syllabus/{id}', 'AdminController@syllabus');
-    Route::get('/admin/syllabus/ajax/content/{id}','AdminController@getContent');
     Route::get('/admin/customer/delete/{id}', 'AdminController@deleteCustomer');
-    Route::get('/admin/add/{id}', 'AdminController@addAdmin');
-    Route::get('/admin/editUser/{id}', 'AdminController@editUser');
-    Route::post('/admin/editedUser/{id}', 'AdminController@editedUser');
-    Route::match(['get', 'post'], '/admin/editConstraintLB', 'AdminController@editConstraintLB');
-    Route::match(['get', 'post'], '/admin/editedConstraintLB', 'AdminController@editedConstraintLB');
-
+    Route::get('/admin/admin/{id}', 'AdminController@addAdmin');
+    Route::get('/admin/chutoa/{id}', 'AdminController@addChutoa');
+    Route::get('/admin/thanhvien/{id}', 'AdminController@addThanhvien');
 
 });
 Route::get('/admin/logout', 'AdminController@logout');
