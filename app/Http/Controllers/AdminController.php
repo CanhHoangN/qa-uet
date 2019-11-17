@@ -7,31 +7,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use App\User;
-use App\Levels;
-use App\Suggests;
-use App\Templates;
-use App\Methods;
-use App\Levels_vi;
-use App\Suggests_vi;
-use App\Templates_vi;
-use App\Methods_vi;
-use App\Syllabus;
-use App\ConstraintLabel_vi;
-use App\ConstraintLabel;
+use App\Session_qa;
+use App\Survey;
+
 
 use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
-    public function language($lg)
-    {
-        if (Session::has('language')) {
-            Session::forget('language');
-        }
-        Session::put('language', $lg);
-        return redirect('/admin/dashboard');
-    }
-
     public function login(Request $request)
     {
         if ($request->isMethod('post')) {
