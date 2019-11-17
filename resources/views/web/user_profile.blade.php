@@ -9,7 +9,7 @@
             <ul class="list-info">
                 <li id="name_profile">{{$user[0]->name}}</li>
                 <li id="role_profile">default</li>
-                <li id="email_profile"><i class="fas fa-envelope"></i> {{$user[0]->email}}</li>
+                <li id="email_profile"><i style="margin-right: 3px" class="fas fa-envelope"></i> {{$user[0]->email}}</li>
             </ul>
         </div>
         <div class="col-md-4 col-sm-4 profile-right">

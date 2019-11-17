@@ -3,14 +3,16 @@
     <title>QA_UET</title>
     <!-- bootstrap -->
 
+
     <!-- <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"> -->
-    <link rel="stylesheet" href="{{asset('css/bootstrap/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap/css/bootstrap.css')}}" >
     <link rel="stylesheet" href="{{asset('css/bootstrap/js/bootstrap.js')}}">
 
     <!-- css -->
     <link rel="stylesheet" href="{{asset('css/userLayouts/index.css')}}">
-    <link href="/css/Datetimepicker/jquery.datetimepicker.min.css" rel="stylesheet">
-    <link href="/css/Datetimepicker/bootstrap-datetimepicker.css" rel="stylesheet">
+  <!--  <link href="/css/Datetimepicker/jquery.datetimepicker.min.css" rel="stylesheet">
+    <link href="/css/Datetimepicker/bootstrap-datetimepicker.css" rel="stylesheet">-->
+    @yield('layout')
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -41,6 +43,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+
+    <!-- Compiled and minified JavaScript -->
+
+
 
 
 
