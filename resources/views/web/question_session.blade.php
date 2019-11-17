@@ -121,9 +121,6 @@
 
     <!-- Modal -->
 
-
-
-    </div>
     <script>
         $(document).ready(function() {
             $('input[name="comment_question"]').keypress(function(e) {
