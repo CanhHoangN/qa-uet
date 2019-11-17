@@ -75,9 +75,9 @@
                                 </div>
                                 <div class="user-post row">
                                     <img  id="avatar_default" src="{{asset('images/web/avatar_default.png')}}" alt="">
-                                    <p id="chutoa"><strong>Chairman: </strong>{{DB::table('users')->where('id',$su->id_user)->value('name')}}</p>
+                                    <p id="chutoa"><a href="">{{DB::table('users')->where('id',$su->id_user)->value('name')}}</a></p>
                                   <!--  <p class="user-badge">Train </p>-->
-                                    <p id="created_at">Asked on {{$su->created_at}} in <a href="#">{{$su->type_session}}</a> </p>
+                                    <p id="created_at">Posted on {{$su->created_at}} in <a href="#">{{$su->type_session}}</a> </p>
 
                                 </div>
                             </div>
