@@ -33,6 +33,9 @@ Route::get('delete/session/{id}',"PageController@deleteSession")->name('delete_s
 Auth::routes();
 
 // survey
+Route::get('/test',function (){
+   return view('web.test');
+});
 Route::get('/handle/survey/{id}',"SurveyController@handlerSurvey")->name('handle.survey');
 Route::get('/survey',"SurveyController@home")->name('survey');
 Route::get('/survey/new', 'SurveyController@new_survey')->name('new.survey');
@@ -45,7 +48,8 @@ Route::get('/survey/{survey}/edit', 'SurveyController@edit')->name('edit.survey'
 Route::patch('/survey/{survey}/update', 'SurveyController@update')->name('update.survey');
 
 Route::post('/survey/view/{survey}/completed', 'AnswerController@store')->name('complete.survey');
-Route::post('/survey/create', 'SurveyController@create')->name('create.survey');
+//Route::post('/survey/create', 'SurveyController@create')->name('create.survey');
+Route::post('/survey/create','SurveyController@create')->name('create.survey');
 
 // Questions related
 Route::post('/survey/{survey}/questions', 'QuestionController@store')->name('store.question');

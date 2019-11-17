@@ -150,7 +150,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="form-session" style="padding:10px" action="{{route('session')}}" method="post">
+                        <form id="form-session" style="padding:10px" action="{{route('create.survey')}}" method="post">
                             @csrf
                             <div class="row el-form">
                                 <div class="col-md-5"><strong>Chủ đề khảo sát(*)</strong></div>
@@ -169,7 +169,7 @@
                             <div class="row">
                                 <div class="col-md-5"><strong>Thời gian tồn tại</strong></div>
                                 <div class='col-sm-7'>
-                                    <input placeholder="Để trống: nếu muốn tồn tại đến khi xoá" type='text' class="form-control" id='datetimepicker4' name="time_survey" />
+                                    <input placeholder="Để trống: nếu muốn tồn tại đến khi xoá" type='text' class="form-control" id='datetimepicker5' name="time_survey" />
                                 </div>
                             </div>
                             <div class="row">
@@ -190,6 +190,11 @@
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker4').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm'
+        });
+    });
+    $(function () {
+        $('#datetimepicker5').datetimepicker({
             format: 'YYYY-MM-DD HH:mm'
         });
     });

@@ -54,13 +54,16 @@ class SurveyController extends Controller
     return view('survey.new');
   }
 
-  public function create(Request $request, Survey $survey)
+  public function create(Request $request)
   {
-    $arr = $request->all();
-    // $request->all()['user_id'] = Auth::id();
-    $arr['user_id'] = Auth::id();
-    $surveyItem = $survey->create($arr);
-    return Redirect::to("/survey/{$surveyItem->id}");
+    Survey::create([
+       'title'=>$request->title_survey,
+       'description'=>$request->description,
+       'password'=>$request->password,
+        'user_id'=>\Illuminate\Support\Facades\Auth::id()
+    ]);
+
+    return redirect()->route('survey');
   }
 
   # retrieve detail page and add questions here

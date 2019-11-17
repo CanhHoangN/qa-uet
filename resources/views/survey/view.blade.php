@@ -50,3 +50,15 @@
         </div>
     </div>
 @stop
+@section('script')
+<script>
+    @if(session('success'))
+        alert('Cảm ơn bạn đã tham gia khảo sát.');
+    @endif
+
+    @if(session('dont_allow'))
+        alert('Bạn đã tham gia khảo sát, vui lòng quay lại sau.');
+    @endif
+</script>
+@stop
+

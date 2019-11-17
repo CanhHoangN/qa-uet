@@ -192,8 +192,8 @@ ul#list-menu-user li:hover{
     /* padding: 0px; */
 }
 
-.col-md-5.logo {
-    color: #78829d;
+.col-md-5.logo a {
+    color: #fff;
 }
 
 .col-md-7.nav-class {
@@ -202,7 +202,7 @@ ul#list-menu-user li:hover{
 }
 
 .col-md-7.nav-class li a {
-    color: #78829d;
+    color: #fff;
 }
 
 .col-md-7.nav-class li a:hover {
@@ -240,23 +240,25 @@ ul#list-menu-user li:hover{
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
-
+.form-search input[type=text]:focus{
+    width: 400px;
+}
 .form-search i {
     position: absolute;
-    right: 27%;
-    top: 50%;
+    right: 28%;
+    top: 65%;
 }
 
 select#sel1 {
-    background: #b4bdd2;
+    background: #e4e6ea;
 }
 
 select#sel2 {
-    background: #b4bdd2;
+    background: #e4e6ea;
 }
 
 select#sel3 {
-    background: #b4bdd2;
+    background: #e4e6ea;
 }
 
 label#category {
@@ -448,7 +450,7 @@ p.user-badge {
 
 .task-list ul li:hover {
 
-    background-color: #b6c5cc;
+    background-color: #eceeef;
     color: #FFFFFF;
     border-left: 5px solid orange;
 }
@@ -1109,7 +1111,9 @@ ul.like-comment-question {
     padding: 0;
     margin: 0;
 }
-
+li.session-vote ul {
+    padding-left: 30px;
+}
 ul.like-comment-question li {
     float: left;
     padding: 5px;

@@ -34,12 +34,7 @@
 
 </html>
 
-
-<script>
-    @if (session('success'))
-        alert({{session('success')}});
-    @endif
-</script>
+@yield('script')
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/materialize.min.js')}}"></script>
 <script src="{{ asset('js/init.js') }}"></script>
