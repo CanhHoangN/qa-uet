@@ -851,6 +851,26 @@ label#title {
 select[name='type_session'] {
     margin-bottom: 10px;
 }
+input[name='name_session']:invalid{
+    border:1px solid #cc8c8c;
+
+}
+input[name='name_session']:valid{
+    border: 1px solid #219fbb;
+}
+input[name='title_survey']:valid{
+    border: 1px solid #219fbb;
+}
+input[name='title_survey']:invalid{
+    border:1px solid #cc8c8c;
+}
+textarea#des-session:invalid{
+    border:1px solid #cc8c8c;
+}
+textarea#des-session:valid{
+    border: 1px solid #219fbb;
+}
+
 
 .row.el-form {
     padding: 4px;
@@ -1199,3 +1219,12 @@ input[name="session"].btn.btn-primary {
 }
 /* padding: 0 10px;
  */
+
+.show-label{
+    display: block;
+    visibility: visible;
+}
+.off-label{
+    display: none;
+    visibility: hidden;
+}

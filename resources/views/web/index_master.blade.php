@@ -11,8 +11,8 @@
                 <div class="btn-ask-question row">
 
                     <div class="btn-group">
-                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"><i class="fas fa-plus" style="margin-right: 3px"></i>Session</button>
-                        <button data-toggle="modal" data-target="#exampleModal1" type="button" class="btn btn-primary"><i class="fas fa-plus" style="margin-right: 3px"></i>Survey</button>
+                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" id="btn_session"><i class="fas fa-plus"  style="margin-right: 3px"></i>Session</button>
+                        <button data-toggle="modal" data-target="#exampleModal1" type="button" class="btn btn-primary" id="btn_survey"><i class="fas fa-plus" style="margin-right: 3px"></i>Survey</button>
                     </div>
 
                 </div>
@@ -99,12 +99,12 @@
                             @csrf
                             <div class="row el-form">
                                 <div class="col-md-5"><strong>Tiêu đề phiên hỏi đáp(*)</strong></div>
-                                <div class="col-md-7"><input class="form-control" type="text" id="name-session" name="name_session"></div>
+                                <div class="col-md-7"><input class="form-control" type="text" id="name-session" name="name_session" required minlength="6" maxlength="60"></div>
                             </div>
                             <div class="row el-form">
                                 <div class="col-md-5"><strong>Mô tả phiên hỏi đáp(*)</strong></div>
                                 <div class="col-md-7">
-                                    <textarea name="description" id="des-session" rows="4"></textarea>
+                                    <textarea name="description" id="des-session" rows="4" required minlength="6" maxlength="100"></textarea>
                                 </div>
                             </div>
                             <div class="row el-form">
@@ -154,12 +154,12 @@
                             @csrf
                             <div class="row el-form">
                                 <div class="col-md-5"><strong>Chủ đề khảo sát(*)</strong></div>
-                                <div class="col-md-7"><input class="form-control" type="text" id="name-session" name="title_survey"></div>
+                                <div class="col-md-7"><input class="form-control" type="text" id="name-session" name="title_survey" required minlength="6" maxlength="100"></div>
                             </div>
                             <div class="row el-form">
                                 <div class="col-md-5"><strong>Mô tả khảo sát(*)</strong></div>
                                 <div class="col-md-7">
-                                    <textarea name="description" id="des-session" rows="4"></textarea>
+                                    <textarea name="description" id="des-session" rows="4" required minlength="6" maxlength="100"></textarea>
                                 </div>
                             </div>
                             <div class="row el-form">
@@ -186,7 +186,6 @@
     </div>
 </div>
 
-
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker4').datetimepicker({
@@ -204,6 +203,8 @@
 
 <script>
     $(document).ready(function() {
+        //$('input[name=session]').prop("disabled",true);
+
 
 
     });
