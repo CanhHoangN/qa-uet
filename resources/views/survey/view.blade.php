@@ -1,4 +1,5 @@
-<?php $data = 0; ?>
+<?php $data = 0;
+      $radio = 0;  ?>
 @extends('layout')
 
 @section('content')
@@ -29,8 +30,8 @@
                 @elseif($question->question_type === 'radio')
                     @foreach($question->option_name as $key=>$value)
                         <p style="margin:0px; padding:0px;">
-                            <input name="{{ $question->id }}[answer]" value="{{$value}}" type="radio" id="{{ $key }}" />
-                            <label for="{{ $key }}">{{ $value }}</label>
+                            <input name="{{ $question->id }}[answer]" value="{{$value}}" type="radio" id="{{$radio}}" />
+                            <label for="{{$radio++}}">{{ $value }}</label>
                         </p>
                     @endforeach
                 @elseif($question->question_type === 'checkbox')

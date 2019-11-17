@@ -34,7 +34,7 @@ Auth::routes();
 
 // survey
 Route::get('/test',function (){
-   return view('web.test');
+   return view('answer.view2');
 });
 Route::get('/handle/survey/{id}',"SurveyController@handlerSurvey")->name('handle.survey');
 Route::get('/survey',"SurveyController@home")->name('survey');

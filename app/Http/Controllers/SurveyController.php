@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Answer_survey;
 use App\Question_survey;
 use App\Session_qa;
 use App\User;
@@ -12,6 +13,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use PhpParser\Node\Expr\Array_;
 
 class SurveyController extends Controller
 {
@@ -101,11 +103,44 @@ class SurveyController extends Controller
 
   # view submitted answers from current logged in user
   public function view_survey_answers(Survey $survey)
-  {
-    $survey->load('user.questions.answers');
-    // return view('survey.detail', compact('survey'));
-    // return $survey;
-    return view('answer.view', compact('survey'));
+  {    $id = $survey->id;
+       $question = Question_survey::where('survey_id',$survey->id)->get();
+
+      $q_checkbox = [];
+      $q_radio = [];
+      $q_radio_1 = [];
+      $list_answer_radio = [];
+      foreach ($question as $key => $value){
+          if($value->question_type == 'checkbox'){
+              foreach ($value->option_name as $key_op => $value_op){
+                  $q_checkbox[] = $value_op;
+              }
+          }else if($value->question_type = 'radio'){
+              $q_count_radio = [];
+              $q_count_radio[] = ['name','value'];
+              $q_radio_1[] = [];
+              //$arr_radio = [];
+              foreach ($value->option_name as $key_op => $value_op){
+                 // $arr_radio[] = $value_op;
+                  $q_radio[] = $value_op;
+                  //$q_radio_1[] = $value_op;
+              }
+
+              foreach ($q_radio as $key => $value){
+                  $q_count_radio[] = [$value,Answer_survey::where('survey_id',$survey->id)->where('answer',"\"$value\"")->count()];
+              }
+              $q_radio_1[] = $q_radio;
+              $list_answer_radio[] = $q_count_radio;
+              //$q_radio_1 = $q_radio;
+              unset($q_count_radio);
+              unset($q_radio);
+          }
+
+      }
+     // dd($question);
+
+      return view('answer.view1',compact('list_answer_radio','id','question'));
+
   }
 
   // TODO: Make sure user deleting survey
