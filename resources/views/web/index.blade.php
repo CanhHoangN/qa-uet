@@ -86,7 +86,7 @@
                                       <li class="session-views">
                                           <ul>
                                               <li id="views">
-                                                20
+                                                {{$su->count_views}}
                                               </li>
                                               <li class="text-li-info">views</li>
                                           </ul>
