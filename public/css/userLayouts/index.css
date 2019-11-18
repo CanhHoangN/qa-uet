@@ -963,7 +963,7 @@ img#img-single-qa {
     border-right: 1px solid #d2d2d2;
 }
 /* single qa*/
-.single-qa.row {margin: auto;margin-left: 3% !important;width: 94%;border: 1px solid #cec0bf;background: #fff;}
+.single-qa.row {margin: auto;margin-left: 3% !important;width: 94%;border: 1px solid #5ba2ea;background: #fff;}
 
 .info-qa ul {
     list-style: none;
@@ -1048,8 +1048,7 @@ input.btn.btn-primary {
     margin-top: 1%;
     padding: 10px;
     background: #fff;
-    margin-left: 20%;
-    width: 60%;
+    width: 100%;
     border-radius: 10px;
 }
 
@@ -1108,7 +1107,7 @@ input.btn.btn-primary {
 }
 .list-comment.row {
     margin: 0px;
-    padding: 5px;
+    padding: 13px;
     border-radius: 20px;
 }
 .col-md-10.el-comment p {

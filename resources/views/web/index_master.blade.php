@@ -8,12 +8,12 @@
             <div class="ask-question col-md-2">
 
                 <div class="btn-ask-question row">
-
+                @can('chutoa')
                     <div class="btn-group">
                         <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" id="btn_session"><i class="fas fa-plus"  style="margin-right: 3px"></i>Session</button>
                         <button data-toggle="modal" data-target="#exampleModal1" type="button" class="btn btn-primary" id="btn_survey"><i class="fas fa-plus" style="margin-right: 3px"></i>Survey</button>
                     </div>
-
+                @endcan
                 </div>
                 <div class="task-list row">
                     <ul>
@@ -49,7 +49,7 @@
                     </ul>
                 </div>
                 <div class="hot-question">
-                    <p>HOT QUESTIONS</p>
+                    <p>HOT SESSIONS</p>
                     <ul>
                         <li>
                             <a href="#">

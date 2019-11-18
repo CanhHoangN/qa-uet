@@ -36,7 +36,7 @@
             </div>
             <div style="padding: 0px;margin: 0px" class="col-md-6"></div>
             <div class="col-md-3 create-qa">
-                <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus"></i> Đặt câu hỏi</button>
+                <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus"></i> Đặt câu hỏi</button>
             </div>
         </div>
 
@@ -46,7 +46,7 @@
                     <img id="img-single-qa" class="img-fluid" src="{{asset("images/web/unanswered-question.png")}}" alt="">
                     <div class="info-qa">
                         <ul>
-                            <li id="title-single-qa"><a href="{{route("show_question",[$qa->id_session,$qa->id_question])}}" style="color:red">{{$qa->title_question}}</a></li>
+                            <li id="title-single-qa"><a href="{{route("show_question",[$qa->id_session,$qa->id_question])}}" style="color:black">{{$qa->title_question}}</a></li>
                             @if(($quantity_question = DB::table('comments')->where('id_question',$qa->id_question)->count()) > 0)
                                 <li style="color: rgb(32, 120, 244)">Hiện tại có {{$quantity_question}} câu trả lời.</li>
                             @else

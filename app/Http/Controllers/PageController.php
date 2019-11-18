@@ -34,8 +34,13 @@ class PageController extends Controller
 
         $count_session = $allsession->count();*/
         //dd($question);
+        $hotsessions=DB::table('sessions')
+            ->join('questions', 'sessions.id_session', '=', 'questions.id_session')
+            ->select('sessions.id_session as id', 'sessions.name_session as name_session', DB::raw("count(*) as count"))
+            ->groupBy('sessions.id_session')
+            ->limit(5);
 
-        return view('web.index', compact('allsession'));
+        return view('web.index', compact('allsession', 'hotsessions'));
     }
     public function showSessionUnQuestion()
     {
@@ -50,8 +55,14 @@ class PageController extends Controller
                     ->whereRaw('sessions.id_session = questions.id_session');
             })
             ->get();
+        $hotsessions=DB::table('sessions')
+            ->join('questions', 'sessions.id_session', '=', 'questions.id_session')
+            ->select('sessions.id_session as id', 'sessions.name_session as name_session', DB::raw("count(*) as count"))
+            ->groupBy('sessions.id_session')
+            ->orderBy('count')
+            ->limit(5);
 
-        return view('web.index', compact('amountUser', 'allsession', 'type_sessions'));
+        return view('web.index', compact('amountUser', 'allsession', 'type_sessions', 'hotsessions'));
     }
     public function createSession(Request $request)
     {
