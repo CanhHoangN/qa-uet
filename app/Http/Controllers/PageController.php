@@ -60,6 +60,7 @@ class PageController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login')->with('NotLogin', 'Vui lòng đăng nhập trước khi tạo phiên hỏi đáp!');
         } else {
+
             if (isset($request->password)) {
                 Session_qa::create([
                     'id_user' => Auth::id(),
@@ -142,12 +143,14 @@ class PageController extends Controller
     public function showQuestion($id, $id_question)
     {
         $session = Session_qa::where("id_session", $id)->get();
-        $comments = Comment::where('id_question', $id_question)->get();
+        $comments = Comment::where('id_question', $id_question)->where('confirm',0)->get();
+        $comments_success = Comment::where('id_question', $id_question)->where('confirm',1)->get();
         $comments_in = Comment::where('id_question', $id_question)->get();
         $like = Like_question::where('id_question', $id_question)->get();
         $question = Question::where('id_question', $id_question)->get();
+
         //dd($like[0]->id_user);
-        return view('web.question_session', compact('session', 'id_question', 'comments', 'comments_in', 'like', 'question'));
+        return view('web.question_session', compact('session', 'id_question', 'comments', 'comments_in', 'like', 'question','comments_success'));
     }
     public function addCommentToQuestion(Request $request, $id_question)
     {
@@ -232,6 +235,11 @@ class PageController extends Controller
         }
 
         Session_qa::where('id_session',$id)->update($edit);
+        return redirect()->back();
+    }
+    public function setSuccessComment($id){
+        Comment::where('id_comment',$id)->update(['confirm'=>1]);
+
         return redirect()->back();
     }
 }
