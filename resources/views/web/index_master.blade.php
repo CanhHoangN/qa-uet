@@ -51,7 +51,7 @@
                     <ul>
                         @foreach($hot_sessions as $hot)
                         <li>
-                            <a href="#">
+                            <a href="{{route('show_detail_session',$hot->id_session)}}">
                                 <img src="" alt="">
                                 <p>{{$hot->name_session}}</p>
                             </a>
@@ -204,12 +204,25 @@
         });
     });
 </script>
+<script>
+    $(document).ready(function() {
+        $('#search_session').keypress(function(e) {
+            if (e.which == 13) {
+                $('form#form-search').submit();
+                return false; //<---- Add this line
+            }
+        });
 
+    });
+</script>
 
 
 <script>
     @if(session('empty_survey'))
         alert('Hiện tại chưa có mục khảo sát nào.');
+    @endif
+    @if(session('emptySearch'))
+    alert('Không tìm thấy kết quả nào.');
     @endif
     $(document).ready(function() {
         //$('input[name=session]').prop("disabled",true);

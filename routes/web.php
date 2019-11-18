@@ -36,6 +36,7 @@ Route::get('unlike/question/{id_question}',"PageController@unlikeQuestion")->nam
 Route::get('delete/session/{id}',"PageController@deleteSession")->name('delete_session');
 Route::post('edit/session/{id}','PageController@editSession')->name('edit_session');
 Route::get('confirm/comment/{id}','PageController@setSuccessComment')->name('confirm.comment');
+Route::get('/search','PageController@searchSession')->name('search.session');
 Auth::routes();
 
 

@@ -36,12 +36,12 @@ class PageController extends Controller
 
         $count_session = $allsession->count();*/
         //dd($question);
-        $hot_sessions = DB::table('sessions')
+       /* $hot_sessions = DB::table('sessions')
         ->join('questions', 'sessions.id_session', '=', 'questions.id_session')
         ->select('sessions.*', DB::raw('count(*) as total'))->groupBy('id_session')->orderBy('total','DESC')->limit('5')
-        ->get();
+        ->get();*/
 
-        return view('web.index', compact('allsession', 'hot_sessions'));
+        return view('web.index', compact('allsession'));
     }
     public function showSessionUnQuestion()
     {
@@ -258,5 +258,18 @@ class PageController extends Controller
         Comment::where('id_comment',$id)->update(['confirm'=>1]);
 
         return redirect()->back();
+    }
+    public function searchSession(Request $request){
+        $allsession = Session_qa::where('name_session','like',"%".$request->tag_name."%")->get();
+        if($allsession->count() == 0){
+            $allsession = Session_qa::where('type_session','like',"%".$request->tag_name."%")->get();
+        }
+
+        if($allsession->count() == 0){
+            return redirect()->back()->with('emptySearch','Kết quả không tìm thấy.');
+        }
+
+
+        return view('web.search', compact('allsession'));
     }
 }

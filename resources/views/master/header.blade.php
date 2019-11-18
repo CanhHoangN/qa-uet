@@ -5,8 +5,9 @@
                 <a href="{{route('home')}}"><img src="{{asset('images/web/logo.png')}}" alt=""></a>
             </div>
             <div class="col-md-4 form-search">
-                <form id="form-search" action="#">
-                    <label><input placeholder="Search session...." type="text"></label>
+                <form id="form-search" action="{{route('search.session')}}" method="GET">
+                    @csrf
+                    <label><input id="search_session" placeholder="Search session...." type="text" name="tag_name"></label>
                 </form>
             </div>
             <div class="col-md-4 col-sm-4">
