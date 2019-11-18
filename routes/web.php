@@ -100,3 +100,49 @@ Route::post('register', [
     'as' => 'post_register',
     'uses' => 'Auth\RegisterController@register'
 ]);
+//liem
+Route::match(['get', 'post'], '/admin', 'AdminController@login');
+
+Route::group(['middleware' => ['auth']], function ()
+{
+    Route::get('/admin/dashboard', 'AdminController@dashboard');
+    Route::get('/admin/settings', 'AdminController@settings');
+    Route::get('/admin/check-pwd', 'AdminController@checkPassword');
+    Route::match(['get', 'post'], '/admin/update-pwd', 'AdminController@updatePassword');
+    //session language
+    Route::get('/lg', function(){
+        Session::put('lg', 'vi');
+        echo "put session language ok!";
+        if(Session::has('lg'))
+        {
+            echo Session::get("lg");
+        }
+    });
+    Route::get('/admin/language/{lg}', 'AdminController@language');
+    //new
+    Route::match(['get', 'post'], '/admin/descLevels', 'AdminController@descLevels');
+    Route::get('/admin/descLevels/edit/{id}', 'AdminController@editDL');
+    Route::post('/admin/descLevels/edited/{id}', 'AdminController@editedDL');
+
+    Route::match(['get', 'post'], '/admin/suggest/{idTemplate}', 'AdminController@suggest');
+    Route::get('/admin/editSuggest/{idTemp}/{idLV}', 'AdminController@editSG');
+    Route::post('/admin/editedSuggest/{idTemp}/{idLV}', 'AdminController@editedSG');
+
+    Route::match(['get', 'post'], '/admin/methods', 'AdminController@methods');
+    Route::get('/admin/methods/edit/{id}', 'AdminController@editMT');
+    Route::post('/admin/methods/edited/{id}', 'AdminController@editedMT');
+
+    Route::match(['get', 'post'], '/admin/customers', 'AdminController@customers');
+    Route::post('/admin/listCustomer', 'AdminController@listCustomer');
+    Route::get('/admin/syllabus/{id}', 'AdminController@syllabus');
+    Route::get('/admin/syllabus/ajax/content/{id}','AdminController@getContent');
+    Route::get('/admin/customer/delete/{id}', 'AdminController@deleteCustomer');
+    Route::get('/admin/add/{id}', 'AdminController@addAdmin');
+    Route::get('/admin/editUser/{id}', 'AdminController@editUser');
+    Route::post('/admin/editedUser/{id}', 'AdminController@editedUser');
+    Route::match(['get', 'post'], '/admin/editConstraintLB', 'AdminController@editConstraintLB');
+    Route::match(['get', 'post'], '/admin/editedConstraintLB', 'AdminController@editedConstraintLB');
+
+
+});
+Route::get('/admin/logout', 'AdminController@logout');
