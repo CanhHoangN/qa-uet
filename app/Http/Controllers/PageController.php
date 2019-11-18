@@ -6,6 +6,7 @@ use App\Comment;
 use App\Comment_in;
 use App\Like_question;
 use App\Question;
+use App\Survey;
 use App\User;
 use Egulias\EmailValidator\Exception\AtextAfterCFWS;
 use Illuminate\Http\Request;
@@ -199,12 +200,18 @@ class PageController extends Controller
         $allsession = Session_qa::where('id_user', $id)->get();
         $user = User::where('id', $id)->get();
 
-        return view('web.user_profile', compact('allsession', 'user'));
+        return view('web.user_profile', compact('allsession', 'user','id'));
     }
     public function deleteSession($id_session)
     {
         Session_qa::where('id_session', $id_session)->delete();
 
         return redirect()->back()->with('delete', 'Xoá thành công!');
+    }
+    public function profileSurvey($id){
+        // = Session_qa::where('id_user', $id)->get();
+        $allsurvey = Survey::where('user_id',$id)->get();
+       // $user = User::where('id', $id)->get();
+        return view('web.user_profile_survey', compact('allsurvey','id'));
     }
 }

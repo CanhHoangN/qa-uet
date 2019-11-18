@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Session_qa;
+use App\Survey;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
@@ -24,9 +25,9 @@ class AppServiceProvider extends ServiceProvider
 
             $amountUser = User::all()->count();
             $allsession= Session_qa::all();
-
+            $amountSurvey = Survey::all()->count();
             $count_session = $allsession->count();
-            $view->with(['type_sessions'=>$type_sessions,'allsession'=>$allsession,'count_session'=>$count_session,'amountUser'=>$amountUser]);
+            $view->with(['type_sessions'=>$type_sessions,'allsession'=>$allsession,'count_session'=>$count_session,'amountUser'=>$amountUser,'amountSurvey'=>$amountSurvey]);
         });
     }
 

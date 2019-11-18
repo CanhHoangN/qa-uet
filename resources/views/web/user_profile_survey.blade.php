@@ -43,46 +43,43 @@
         </ul>
     </div>
     <div class="list-box-question">
-        @foreach($allsession as $su)
-            @if(($su->id_session % 2) != 0)
+        @foreach($allsurvey as $su)
+            @if(($su->id % 2) != 0)
                 <div style="background: #fff" class="box-question row">
                     @else
                         <div  class="box-question row">
                             @endif
-                            <div class="col-md-7">
+                            <div class="col-md-8">
                                 <div class="content-box">
-                                    <strong id="title-sesison"><a href="{{route("show_detail_session",$su->id_session)}}">{{$su->name_session}}</a></strong>
+                                    <strong id="title-sesison"><a href="{{route('handle.survey',$su->id)}}">{{$su->title}}</a></strong>
                                     <p>{{$su->description}}</p>
                                 </div>
                                 <div class="related-content row">
                                     <ul class="question-tag">
-                                        <li><a href="#">{{$su->type_session}}</a></li>
+                                        <li><a href="#">aas</a></li>
                                     </ul>
                                 </div>
                                 <div class="user-post row">
                                     <img  id="avatar_default" src="{{asset('images/web/avatar_default.png')}}" alt="">
-                                    <p id="chutoa"><a href="">{{DB::table('users')->where('id',$su->id_user)->value('name')}}</a></p>
+                                    <p id="chutoa"><a href="">{{DB::table('users')->where('id',$su->user_id)->value('name')}}</a></p>
                                     <!--  <p class="user-badge">Train </p>-->
-                                    <p id="created_at">Posted on {{$su->created_at}} in <a href="#">{{$su->type_session}}</a> </p>
+                                    <p id="created_at">Asked on {{$su->created_at}} in <a href="#">aaaa</a> </p>
 
                                 </div>
                             </div>
                             <div class="col-md-4 view-question">
-                                <ul class="ul-info">
+                               <!-- <ul class="ul-info">
                                     <li class="session-views">
                                         <ul>
                                             <li id="views">
-                                                {{$su->count_views}}
+                                                20
                                             </li>
                                             <li class="text-li-info">views</li>
                                         </ul>
                                     </li>
                                     <li class="session-questions">
                                         <ul>
-                                            <li id="questions">{{DB::table('questions')
-                                                      ->select(DB::raw('count(*) as total'))
-                                                      ->where('id_session',$su->id_session)
-                                                      ->value('total')}}
+                                            <li id="questions">
                                             </li>
                                             <li class="text-li-info">questions</li>
                                         </ul>
@@ -94,24 +91,16 @@
                                         </ul>
                                     </li>
 
-                                </ul>
-
+                                </ul>-->
                             </div>
-                            @if(\Illuminate\Support\Facades\Auth::check())
-                                @if($id == \Illuminate\Support\Facades\Auth::check())
-                            <div class="col-md-1">
-                                <div class="delete-session"><a href="{{route('delete_session',$su->id_session)}}"><i class="fas fa-trash"></i></a></div>
-                            </div>
-                                @endif
-                            @endif
                         </div>
                         @endforeach
                 </div>
-@stop
+                @stop
 
     </div>
-<script>
-    @if (session('delete'))
+    <script>
+        @if (session('delete'))
         alert({{session('delete')}});
-    @endif
-</script>
+        @endif
+    </script>

@@ -14,8 +14,8 @@
 Route::get('/',"PageController@index")->name('home');
 //Route::get('/login',function);
 // user
-
 Route::get('/member/{id}',"PageController@profileUser")->name('profile_user');
+Route::get('/member/survey/{id}','PageController@profileSurvey')->name('profile.survey');
 
 // session
 Route::get('session/un-question',"PageController@showSessionUnQuestion")->name('un_question');
@@ -36,6 +36,7 @@ Auth::routes();
 Route::get('/test',function (){
    return view('answer.view2');
 });
+
 Route::get('/handle/survey/{id}',"SurveyController@handlerSurvey")->name('handle.survey');
 Route::get('/survey',"SurveyController@home")->name('survey');
 Route::get('/survey/new', 'SurveyController@new_survey')->name('new.survey');

@@ -40,6 +40,10 @@
                     <p>Members</p>
                     <strong>{{$amountUser}}</strong>
                 </div>
+                <div style="border-left:4px solid #e2607e" class="total-member">
+                    <p>Surveys</p>
+                    <strong>{{$amountSurvey}}</strong>
+                </div>
                 <div class="most-used-tags">
                     <p>MOST USED TAGS</p>
                     <ul>
