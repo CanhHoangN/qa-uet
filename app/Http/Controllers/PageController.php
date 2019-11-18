@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Events\FormSubmitted;
+use Illuminate\Support\Facades\Gate;
+
 
 class PageController extends Controller
 {
@@ -34,13 +36,12 @@ class PageController extends Controller
 
         $count_session = $allsession->count();*/
         //dd($question);
-        $hotsessions=DB::table('sessions')
-            ->join('questions', 'sessions.id_session', '=', 'questions.id_session')
-            ->select('sessions.id_session as id', 'sessions.name_session as name_session', DB::raw("count(*) as count"))
-            ->groupBy('sessions.id_session')
-            ->limit(5);
+        $hot_sessions = DB::table('sessions')
+        ->join('questions', 'sessions.id_session', '=', 'questions.id_session')
+        ->select('sessions.*', DB::raw('count(*) as total'))->groupBy('id_session')
+        ->get();
 
-        return view('web.index', compact('allsession', 'hotsessions'));
+        return view('web.index', compact('allsession', 'hot_sessions'));
     }
     public function showSessionUnQuestion()
     {
@@ -55,43 +56,48 @@ class PageController extends Controller
                     ->whereRaw('sessions.id_session = questions.id_session');
             })
             ->get();
-        $hotsessions=DB::table('sessions')
-            ->join('questions', 'sessions.id_session', '=', 'questions.id_session')
-            ->select('sessions.id_session as id', 'sessions.name_session as name_session', DB::raw("count(*) as count"))
-            ->groupBy('sessions.id_session')
-            ->orderBy('count')
-            ->limit(5);
+        // $hotsessions=DB::table('sessions')
+        //     ->join('questions', 'sessions.id_session', '=', 'questions.id_session')
+        //     ->select('sessions.id_session as id', 'sessions.name_session as name_session', DB::raw("count(*) as count"))
+        //     ->groupBy('sessions.id_session')
+        //     ->orderBy('count')
+        //     ->get();
 
-        return view('web.index', compact('amountUser', 'allsession', 'type_sessions', 'hotsessions'));
+        return view('web.index', compact('amountUser', 'allsession', 'type_sessions'));
     }
     public function createSession(Request $request)
     {
 
 
-        if (!Auth::check()) {
-            return redirect()->route('login')->with('NotLogin', 'Vui lòng đăng nhập trước khi tạo phiên hỏi đáp!');
-        } else {
-
-            if (isset($request->password)) {
-                Session_qa::create([
-                    'id_user' => Auth::id(),
-                    'name_session' => $request->name_session,
-                    'type_session' => $request->type_session,
-                    'description' => $request->description,
-                    'password' => bcrypt($request->password),
-                    'expired_at' => $request->time_session,
-                ]);
+        if (Gate::allows('chutoa')) {
+            if (!Auth::check()) {
+                return redirect()->route('login')->with('NotLogin', 'Vui lòng đăng nhập trước khi tạo phiên hỏi đáp!');
             } else {
-                Session_qa::create([
-                    'id_user' => Auth::id(),
-                    'name_session' => $request->name_session,
-                    'type_session' => $request->type_session,
-                    'description' => $request->description,
-                    'expired_at' => $request->time_session,
-                ]);
-            }
+                if (isset($request->password)) {
+                    Session_qa::create([
+                        'id_user' => Auth::id(),
+                        'name_session' => $request->name_session,
+                        'type_session' => $request->type_session,
+                        'description' => $request->description,
+                        'password' => bcrypt($request->password),
+                        'expired_at' => $request->time_session,
+                    ]);
+                } else {
+                    Session_qa::create([
+                        'id_user' => Auth::id(),
+                        'name_session' => $request->name_session,
+                        'type_session' => $request->type_session,
+                        'description' => $request->description,
+                        'expired_at' => $request->time_session,
+                    ]);
+                }
 
-            return redirect()->back();
+                return redirect()->back();
+            }
+        } else {
+            echo "<script>";
+            echo "alert('Không có đủ quyền!');";
+            echo "</script>";
         }
     }
     public function showSession($id)
