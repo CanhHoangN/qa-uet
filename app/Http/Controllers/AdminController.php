@@ -331,9 +331,13 @@ class AdminController extends Controller
         }
         return view('admin.editConstraintLB', compact('lb'));
     }
+<<<<<<< HEAD
     public function editedConstraintLB(Request $request)
     {
         $data = $request->all();
+=======
+    // ok
+>>>>>>> 7f1459545372098b3f3b380bfd941f88576db944
 
         $language = Session::get('language');
 
