@@ -15,7 +15,7 @@
                     {{ session('error_required_password') }}
                 </div>
             @endif
-            <input placeholder="Vui lòng nhập key..." type="text" name="required_password" id="required_password">
+            <input placeholder="Vui lòng nhập key..." type="password" name="required_password" id="required_password">
             <input class="btn btn-primary" type="submit" value="submit">
         </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Session_qa;
 use App\surveys;
 use Closure;
 use Illuminate\Support\Facades\Session;
@@ -19,7 +20,8 @@ class requiredPasswordQa
     {
 
         $id = $request->route('id');
-        $pass = surveys::where('id_survey',$id)->value('password');
+        //dd($id);
+        $pass = Session_qa::where('id_session',$id)->value('password');
         $accept = Session::get('list');
 
         if(!empty($pass)){
