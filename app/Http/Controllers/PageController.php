@@ -38,7 +38,7 @@ class PageController extends Controller
         //dd($question);
         $hot_sessions = DB::table('sessions')
         ->join('questions', 'sessions.id_session', '=', 'questions.id_session')
-        ->select('sessions.*', DB::raw('count(*) as total'))->groupBy('id_session')
+        ->select('sessions.*', DB::raw('count(*) as total'))->groupBy('id_session')->orderBy('total','DESC')->limit('5')
         ->get();
 
         return view('web.index', compact('allsession', 'hot_sessions'));

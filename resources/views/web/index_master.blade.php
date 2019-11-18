@@ -53,7 +53,7 @@
                         <li>
                             <a href="#">
                                 <img src="" alt="">
-                                <p>{{$hot->count}}</p>
+                                <p>{{$hot->name_session}}</p>
                             </a>
                         </li>
                         @endforeach
