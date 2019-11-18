@@ -112,37 +112,36 @@ class SurveyController extends Controller
   {    $id = $survey->id;
        $question = Question_survey::where('survey_id',$survey->id)->get();
 
-      $q_checkbox = [];
+     //Ω dd($question);
       $q_radio = [];
       $q_radio_1 = [];
       $list_answer_radio = [];
       foreach ($question as $key => $value){
-          if($value->question_type == 'checkbox'){
-              foreach ($value->option_name as $key_op => $value_op){
-                  $q_checkbox[] = $value_op;
-              }
-          }else if($value->question_type = 'radio'){
+          if($value->question_type == 'radio'){
               $q_count_radio = [];
               $q_count_radio[] = ['name','value'];
               $q_radio_1[] = [];
-              //$arr_radio = [];
-              foreach ($value->option_name as $key_op => $value_op){
-                 // $arr_radio[] = $value_op;
+
+              foreach ((array) $value->option_name as $key_op => $value_op){
                   $q_radio[] = $value_op;
-                  //$q_radio_1[] = $value_op;
               }
 
-              foreach ($q_radio as $key => $value){
+              foreach ((array) $q_radio as $key => $value){
                   $q_count_radio[] = [$value,Answer_survey::where('survey_id',$survey->id)->where('answer',"\"$value\"")->count()];
               }
+
+
               $q_radio_1[] = $q_radio;
               $list_answer_radio[] = $q_count_radio;
-              //$q_radio_1 = $q_radio;
               unset($q_count_radio);
               unset($q_radio);
+              $q_radio = [];
+
           }
 
       }
+
+     // dd($list_answer_radio);
      // dd($question);
 
       return view('answer.view1',compact('list_answer_radio','id','question'));
