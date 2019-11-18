@@ -98,7 +98,7 @@
 
                             </div>
                             @if(\Illuminate\Support\Facades\Auth::check())
-                                @if($id == \Illuminate\Support\Facades\Auth::check())
+                                @if($id == \Illuminate\Support\Facades\Auth::id())
                             <div class="col-md-1">
                                 <div class="delete-session"><a href="{{route('delete_session',$su->id_session)}}"><i class="fas fa-trash"></i></a></div>
                             </div>
@@ -111,7 +111,12 @@
 
     </div>
 <script>
+
     @if (session('delete'))
         alert({{session('delete')}});
     @endif
+    @if (session('empty_survey'))
+    alert({{session('empty_survey')}});
+    @endif
+
 </script>

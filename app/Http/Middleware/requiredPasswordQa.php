@@ -20,6 +20,7 @@ class requiredPasswordQa
     {
 
         $id = $request->route('id');
+        //dd($id);
         $pass = Session_qa::where('id_session',$id)->value('password');
         $accept = Session::get('list');
 

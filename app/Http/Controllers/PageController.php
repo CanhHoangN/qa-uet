@@ -211,6 +211,7 @@ class PageController extends Controller
     public function profileSurvey($id){
         // = Session_qa::where('id_user', $id)->get();
         $allsurvey = Survey::where('user_id',$id)->get();
+        
        // $user = User::where('id', $id)->get();
         return view('web.user_profile_survey', compact('allsurvey','id'));
     }

@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="user-post row">
                                     <img  id="avatar_default" src="{{asset('images/web/avatar_default.png')}}" alt="">
-                                    <p id="chutoa"><a href="">{{DB::table('users')->where('id',$su->id_user)->value('name')}}</a></p>
+                                    <p id="chutoa"><a href="{{route('profile_user',$su->id_user)}}">{{DB::table('users')->where('id',$su->id_user)->value('name')}}</a></p>
                                   <!--  <p class="user-badge">Train </p>-->
                                     <p id="created_at">Posted on {{$su->created_at}} in <a href="{{route('tag.name',$su->type_session)}}">{{$su->type_session}}</a> </p>
 
@@ -113,4 +113,6 @@
                         </div>
         @endforeach
     </div>
+
 @stop
+

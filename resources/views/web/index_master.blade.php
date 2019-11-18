@@ -206,6 +206,9 @@
 
 
 <script>
+    @if(session('empty_survey'))
+        alert('Hiện tại chưa có mục khảo sát nào.');
+    @endif
     $(document).ready(function() {
         //$('input[name=session]').prop("disabled",true);
 

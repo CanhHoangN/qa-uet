@@ -22,16 +22,22 @@ class SurveyController extends Controller
   public function home(Request $request)
   {
     $allsurvey = Survey::all();
-      $type_sessions = DB::table('sessions')
-          ->select('type_session', DB::raw('count(*) as total'))
-          ->groupBy('type_session')->get();
 
-      $amountUser = User::all()->count();
-      $allsession= Session_qa::all();
+      if($allsurvey->count() == 0){
+          return redirect()->back()->with('empty_survey','Hiện tại chưa có survey nào.');
+      }else{
+          $type_sessions = DB::table('sessions')
+              ->select('type_session', DB::raw('count(*) as total'))
+              ->groupBy('type_session')->get();
 
-      $count_session = $allsession->count();
+          $amountUser = User::all()->count();
+          $allsession= Session_qa::all();
 
-    return view('web.survey', compact('allsurvey','amountUser','count_session','type_sessions'));
+          $count_session = $allsession->count();
+
+          return view('web.survey', compact('allsurvey','amountUser','count_session','type_sessions'));
+      }
+
   }
   public function handlerSurvey($id){
       //dd(\Illuminate\Support\Facades\Auth::id());

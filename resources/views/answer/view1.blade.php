@@ -18,7 +18,7 @@
 <body>
 <br />
 <div class="container">
-    <h3 align="center">Statistics of survey results "{{\App\Survey::where('id',$id)->value('title')}} with type "radio"</h3><br />
+    <h3 align="center">Statistics of survey results "{{\App\Survey::where('id',$id)->value('title')}}" with type "radio"</h3><br />
 
     <div class="panel panel-default">
 
