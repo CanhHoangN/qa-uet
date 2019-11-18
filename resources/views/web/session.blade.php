@@ -54,7 +54,12 @@
                             @endif
 
                         </ul>
-                        <span id="post-by">Đăng bởi: <a href="{{route('profile_user',$qa->id_user)}}">{{$qa->whoposted}}</a></span>
+                        @if($qa->whoposted == 'Hide' || $qa->whoposted == 'Guess')
+                            <span id="post-by">Đăng bởi:{{$qa->whoposted}}</span>
+                        @else
+                            <span id="post-by">Đăng bởi: <a href="{{route('profile_user',$qa->id_user)}}">{{$qa->whoposted}}</a></span>
+                        @endif
+
                         <span id="amount-like">lượt thích: {{DB::table('like_question')->where('id_question',$qa->id_question)->count()}}</span>
                     </div>
 
@@ -78,7 +83,12 @@
                     <form action="{{route("add_qa_session",$id)}}" method="post">
                         @csrf
                         <input class="form-control" type="text" name="title_question" placeholder="Nội dung câu hỏi..."><br>
-                        <span>Đặt chế độ ẩn danh: </span><input id="toggle-event" type="checkbox" name="post_person" data-size="mini" data-onstyle="danger" data-toggle="toggle"><br>
+                        @if(!\Illuminate\Support\Facades\Auth::check())
+                            <span>Đặt chế độ ẩn danh: </span><input id="toggle-event" type="checkbox" name="post_person" data-size="mini" data-onstyle="danger" data-toggle="toggle" value="off"><br>
+                        @else
+                            <span>Đặt chế độ ẩn danh: </span><input id="toggle-event" type="checkbox" name="post_person" data-size="mini" data-onstyle="danger" data-toggle="toggle"><br>
+                        @endif
+
                         <input  type="submit" class="btn btn-primary" value="submit">
                     </form>
                 </div>

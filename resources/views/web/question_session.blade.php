@@ -72,7 +72,11 @@
                                     <img src="{{asset("images/web/profile.png")}}" alt="">
                                 </div>
                                 <div class="col-md-10 el-comment">
+                                    @if(\Illuminate\Support\Facades\Auth::check())
                                     <span style="color: #385898"><a href="{{route('profile_user',$comment->id_user)}}">{{\App\User::where('id',$comment->id_user)->value('name')}}</a></span><b> {{$comment->content}}</b>
+                                    @else
+                                        <span style="color: #385898">{{\App\User::where('id',$comment->id_user)->value('name')}}</span><b> {{$comment->content}}</b>
+                                    @endif
                                     <ul class="like-comment-question">
                                         <li class="like-comment-{{$comment->id_comment}}"><a href="#">Thích</a></li>
                                         @if(($comments_in=DB::table('comment_in')->where('id_comment',$comment->id_comment)->get())->count() == 0)
@@ -87,7 +91,11 @@
                                             <img src="{{asset("images/web/profile.png")}}" alt="">
                                         </div>
                                         <div class="col-md-11 content-rep-comment">
+                                            @if(\Illuminate\Support\Facades\Auth::check())
                                             <span style="color: #385898"><a href="{{route('profile_user',$cmt->id_user)}}">{{\App\User::where('id',$cmt->id_user)->value('name')}}</a></span><b> {{$cmt->content}}</b>
+                                            @else
+                                                <span style="color: #385898">{{\App\User::where('id',$cmt->id_user)->value('name')}}</span><b> {{$cmt->content}}</b>
+                                            @endif
                                         </div>
                                     </div>
                                     @endforeach
@@ -151,8 +159,9 @@
             // alert(JSON.stringify(data));
             const string = JSON.stringify(data);
             const obj = JSON.parse(string);
-
+            @if(\Illuminate\Support\Facades\Auth::check())
             phantuchon.append("<div class='list-comment row'><div class='col-md-1 avatar-people'><img src='{{asset('images/web/profile.png')}}'></div><div class='col-md-10 el-comment'><span style='color: #385898'><a href='{{route('profile_user',\Illuminate\Support\Facades\Auth::id())}}' >{{\Illuminate\Support\Facades\Auth::user()->name}}</a></span><b> "+obj.text+"</b><ul class='like-comment-question'><li class='like-comment'><a>Thích</a></li><li class='res-comment'>Trả lời</li></ul></div></div>");
+            @endif
         });
     </script>
 </body>
