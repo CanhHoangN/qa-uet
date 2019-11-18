@@ -221,4 +221,17 @@ class PageController extends Controller
        // dd($allsession);
         return view('web.tag_name',compact('allsession'));
     }
+    public function editSession(Request $request,$id){
+        $edit = [];
+        if(isset($request->title_edit) &&  isset($request->desc_edit)){
+            $edit = ['name_session'=>$request->title_edit,'description'=>$request->desc_edit];
+        }else if(!isset($request->title_edit) &&  isset($request->desc_edit)){
+            $edit = ['description'=>$request->desc_edit];
+        }else{
+            $edit = ['name_session'=>$request->title_edit];
+        }
+
+        Session_qa::where('id_session',$id)->update($edit);
+        return redirect()->back();
+    }
 }

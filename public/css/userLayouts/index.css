@@ -943,7 +943,7 @@ ul.profile-session li i {
 
 .list-qa-session.row {
     background: #5ba2ea;
-    padding: 25px 35px;
+    padding: 10px 35px;
     /* width: 97%; */
 }
 .search-create-qa.row {
@@ -960,18 +960,10 @@ img#img-single-qa {
     padding-top: 1px;
     /* border-top: red; */
     /* border: 1px solid black; */
-    border-right: 1px solid black;
+    border-right: 1px solid #d2d2d2;
 }
 /* single qa*/
-.single-qa.row {
-
-    margin: auto;
-    margin-left: 3% !important;
-    width: 94%;
-
-    border: 1px solid #ca7070;
-    background: #fff;
-}
+.single-qa.row {margin: auto;margin-left: 3% !important;width: 94%;border: 1px solid #cec0bf;background: #fff;}
 
 .info-qa ul {
     list-style: none;
@@ -1273,4 +1265,14 @@ input[name="session"].btn.btn-primary {
 }
 li.session-questions {
     padding-left: 15px !important;
+}
+.dropdown.user_login {
+    padding-top: 9px;
+}
+
+.dropdown.user_login a {
+    font-size: 16px !important;
+}
+button.btn.btn-danger.edit {
+    padding: 0px 20px;
 }

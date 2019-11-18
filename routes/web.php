@@ -34,6 +34,7 @@ Route::post('post/comment/in/{id_question}/{id_comment}',"PageController@addComm
 Route::get('like/question/{id_question}',"PageController@likeQuestion")->name('like_question');
 Route::get('unlike/question/{id_question}',"PageController@unlikeQuestion")->name('un_like_question');
 Route::get('delete/session/{id}',"PageController@deleteSession")->name('delete_session');
+Route::post('edit/session/{id}','PageController@editSession')->name('edit_session');
 Auth::routes();
 
 

@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-2 col-sm-2 login-register">
                 @if(Auth::check())
-                    <div class="dropdown">
+                    <div class="dropdown user_login">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{Auth::user()->name}}</a>
                         <ul id="list-menu-user" class="dropdown-menu">
                             <li><a href="{{route('profile_user',\Illuminate\Support\Facades\Auth::id())}}"><i class="far fa-user"></i> User Profile</a></li>
