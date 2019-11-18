@@ -24,7 +24,7 @@ class PageController extends Controller
     {
         $list_qa = array();
         session()->push('list', -1);
-        $allsession = Session_qa::all();
+        $allsession= Session_qa::orderBy('id_session','DESC')->get();
         /* $type_sessions = DB::table('sessions')
             ->select('type_session', DB::raw('count(*) as total'))
             ->groupBy('type_session')->get();*
@@ -211,7 +211,7 @@ class PageController extends Controller
     public function profileSurvey($id){
         // = Session_qa::where('id_user', $id)->get();
         $allsurvey = Survey::where('user_id',$id)->get();
-        
+
        // $user = User::where('id', $id)->get();
         return view('web.user_profile_survey', compact('allsurvey','id'));
     }

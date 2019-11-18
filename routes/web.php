@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 // survey
 Route::get('/test',function (){
-   return view('answer.view2');
+   return view('web.test');
 });
 
 Route::get('/handle/survey/{id}',"SurveyController@handlerSurvey")->name('handle.survey');

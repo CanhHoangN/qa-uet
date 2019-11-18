@@ -219,10 +219,10 @@ ul#list-menu-user li:hover{
 
 .form-search input[type=text] {
     position: absolute;
-    right: 25%;
-    top: 15%;
+    right: 5%;
+    top: 26%;
     width: 350px;
-    height: 32px;
+    height: 33px;
     border-radius: 30px;
     -moz-border-radius: 30px;
     -webkit-border-radius: 30px;
@@ -281,7 +281,9 @@ ul.state-question {
 }
 
 .el-filter {
-    margin-left: 37%;
+    padding-top: 15px;
+    margin-left: 40%;
+
 }
 
 .el-amount-question {
@@ -591,6 +593,8 @@ p.user-badge {
 }
 
 .login-register a {
+    font-size: 16px;
+    color: #fff;
     text-decoration: none;
     cursor: pointer;
 }
@@ -939,7 +943,7 @@ ul.profile-session li i {
 
 .list-qa-session.row {
     background: #5ba2ea;
-    padding: 15px 35px;
+    padding: 25px 35px;
     /* width: 97%; */
 }
 .search-create-qa.row {
@@ -1193,7 +1197,8 @@ ul.like-comment-question li:nth-child(2):hover {
     border-bottom: 1px solid #337ab7;
 }
 .box.row {
-    margin: 0px;
+    /* margin: 0px; */
+    height: 86px;
 }
 
 .list-box-question {
@@ -1227,4 +1232,45 @@ input[name="session"].btn.btn-primary {
 .off-label{
     display: none;
     visibility: hidden;
+}
+.col-md-5.logo {
+    margin-top: 11px;
+}
+.form-search i {
+    position: absolute;
+    right: 28%;
+    top: 50%;
+}
+.col-md-5.logo a {
+    padding-left: 20px;
+}
+
+.col-md-6.l-login {
+    padding: 8px;
+    border-right: 2px solid white;
+    /* height: 22px; */
+}
+
+.col-md-6.r-register {
+    padding: 8px;
+}
+
+.col-md-2.logo a img {
+    margin-left: 18%;
+    margin-top: 15%;
+}
+.col-md-2.login-register {
+    border-left: 1px solid #464646;
+}
+.col-md-2.logo {
+    border-right: 1px solid #464646;
+}
+.col-md-6.l-login a:hover {
+    color: #fff;
+}
+.col-md-6.r-register a:hover {
+    color: #fff;
+}
+li.session-questions {
+    padding-left: 15px !important;
 }

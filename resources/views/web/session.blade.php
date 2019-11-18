@@ -19,10 +19,7 @@
     </div>
     <div class="list-qa-session">
         <div class="list-qa-session row">
-            <select name="" id="">
-                <option value="question">Danh sách câu hỏi</option>
-                <option value="session">Khảo sát ý kiến</option>
-            </select>
+
         </div>
 
         <div class="search-create-qa row">

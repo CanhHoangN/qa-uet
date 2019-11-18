@@ -1,6 +1,5 @@
 <html lang="utf8">
 @include('master.master')
-
 <body>
 @include('master.header')
 <div class="body-qa">
@@ -20,10 +19,7 @@
                     <ul>
                         <li><a href="#"><i class="fa fa-question-circle"></i> Question</a></li>
                         <li><a href="#"><i class="fa fa-tags"></i> Tags</a></li>
-                        <li><a href="#"><i class="fa fa-trophy"></i> Badges</a></li>
-                        <li><a href="#"><i class="fa fa-th-list"></i> Categories</a></li>
                         <li><a href="#"><i class="fa fa-users"></i> Users</a></li>
-                        <li><a href="#"><i class="fas fa-poll-h"></i> session</a></li>
                     </ul>
                 </div>
             </div>
@@ -119,7 +115,11 @@
                                         <option value="technology">technology</option>
                                         <option value="marketing">marketing </option>
                                         <option value="billionaire">billionaire</option>
+                                        <option value="IT">IT</option>
                                         <option value="Q&A">Q&A</option>
+                                        <option value="summarize">summarize</option>
+                                        <option value="other">other</option>
+
                                     </select>
                                 </div>
                             </div>
