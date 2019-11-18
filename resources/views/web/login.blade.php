@@ -56,6 +56,7 @@
         <a id="sign-up-here" href="{{route('register')}}">Sign up here</a>
     </div>
 </div>
+
 </body>
 </html>
 

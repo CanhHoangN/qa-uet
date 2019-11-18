@@ -188,6 +188,8 @@
             </div>
         </div>
     </div>
+    @include('web.footer')
+
 </div>
 
 <script type="text/javascript">

@@ -1287,3 +1287,18 @@ button.btn.btn-danger.edit {
     border-radius: 5px;
     font-family: 'Poppins', sans-serif;
 }
+.text-center {
+    text-align: center;
+}
+footer {
+    margin-top: 100px;
+    background: #2f364a !important;
+    color: #f5f5f5;
+    padding: 32px;
+}
+.text-center a{
+    color: #33d6b1;
+}
+.text-center a:hover{
+    color: #33d6b1;
+}
