@@ -36,6 +36,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public $timestamps = false;
     public function questions() {
         return $this->hasMany(Question_survey::class);
     }

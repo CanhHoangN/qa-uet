@@ -36,7 +36,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Admin</th>
+                    <th>Permission</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -46,12 +46,12 @@
                     <td>{{$c->id}}</td>
                     <td>{{$c->name}}</td>
                     <td>{{$c->email}}</td>
-                    <td>{{$c->admin}}</td>
+                    <td>{{$c->permission}}</td>
                     <td>
-                        <button type="button" class="btn btn-primary"><a style="color:white" href="{{url('/admin/syllabus/'.$c->id)}}" target="_blank">syllabus</a></button>
-                        <button type="button" class="btn btn-primary"><a style="color:white" href="{{url('/admin/editUser/'.$c->id)}}">edit</a></button>
-                        <button type="button" class="btn btn-primary"><a style="color:white" href="{{url('/admin/add/'.$c->id)}}">add admin</a></button>
-                        <button onclick="return myFunction()" type="button" class="btn btn-danger"><a style="color:white" href="{{url('/admin/customer/delete/'.$c->id)}}">delete user</a></button>
+                        <button type="button" class="btn btn-primary"><a style="color:white" href="{{url('/admin/admin/'.$c->id)}}">admin</a></button>
+                        <button type="button" class="btn btn-primary"><a style="color:white" href="{{url('/admin/chutoa/'.$c->id)}}">chủ toạ</a></button>
+                        <button type="button" class="btn btn-primary"><a style="color:white" href="{{url('/admin/thanhvien/'.$c->id)}}">thành viên</a></button>
+                        <button onclick="return myFunction()" type="button" class="btn btn-danger"><a style="color:white" href="{{url('/admin/customer/delete/'.$c->id)}}">Xoá</a></button>
 
                     </td>
                 </tr>

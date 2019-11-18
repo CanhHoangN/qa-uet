@@ -2,7 +2,7 @@
 @section('content')
     <div id="content">
         <div id="content-header">
-            <h2 class="text-center lead">Methods</h2>
+            <h2 class="text-center lead">Surveys</h2>
             @if(Session::has('flash_message_success'))
                 <div class="alert alert-success alert-block">
                     <button type="button" class="close" data-dismiss="alert"></button>
@@ -20,22 +20,26 @@
             <table class="table table-dark table-hover">
                 <thead>
                 <tr>
-                    <th>Id Method</th>
-                    <th>Id Template </th>
-                    <th>Id Level</th>
-                    <th>Name</th>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>ID User</th>
+                    <th>Description</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($mt as $m)
+                @foreach($surveys as $sv)
                     <tr>
-                        <td>{{$m->idMethod}}</td>
-                        <td>{{$m->idTemplate}}</td>
-                        <td>{{$m->idLevel}}</td>
-                        <td>{{$m->nameMethod}}</td>
+                        <td>{{$sv->id}}</td>
+                        <td>{{$sv->title}}</td>
+                        <td>{{$sv->user_id}}</td>
+                        <td>{{$sv->description}}</td>
+                        <td>{{$sv->create_at}}</td>
+                        <td>{{$sv->updated_at}}</td>
                         <td>
-                            <a href="{{url('admin/methods/edit/'.$m->idMethod)}}">Edit</a>
+                            <a href="{{url('admin/surveys/delete/'.$sv->id)}}">Xoá</a>
                         </td>
                     </tr>
                 @endforeach
