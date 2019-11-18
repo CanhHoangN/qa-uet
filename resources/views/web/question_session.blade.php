@@ -12,9 +12,14 @@
             <div class="col-md-6">
                 <ul class="profile-session">
                     <li id="title-session"><i class="fa fa-check"></i>{{$session[0]->name_session}}</li>
-                    <li id="person-session"><i class="fa fa-edit"></i>{{$name = (DB::table('users')->where('id',$session[0]->id_user))->value('name')}}</li>
+                    <li id="person-session"><i class="fa fa-edit"></i><a href="{{route('profile_user',$session[0]->id_user)}}">{{$name = (DB::table('users')->where('id',$session[0]->id_user))->value('name')}}</a></li>
                     <li id="des-session"><i class="far fa-sticky-note"></i>{{$session[0]->description}}</li>
                     <li id="time-session"><i class="fa fa-history"></i>{{$session[0]->created_at}}</li>
+                    @if(\Illuminate\Support\Facades\Auth::check())
+                        @if($session[0]->id_user == \Illuminate\Support\Facades\Auth::id())
+                            <li id="time-session"><i class="fas fa-user-edit"></i><button class="btn btn-danger edit" data-toggle="modal" data-target="#exampleModal1">Edit</button></li>
+                        @endif
+                    @endif
                 </ul>
             </div>
 

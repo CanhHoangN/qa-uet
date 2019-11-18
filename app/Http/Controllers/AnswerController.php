@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Answer_survey;
+use App\Question;
+use App\Question_survey;
 use Auth;
 use Illuminate\Http\Request;
 use App\Survey;
@@ -20,6 +22,9 @@ class AnswerController extends Controller
   {
     // remove the token
       $check_user = Answer_survey::where('survey_id',$survey->id)->where('user_id',\Illuminate\Support\Facades\Auth::id())->get();
+      $question = Question_survey::where('survey_id',$survey->id)->get();
+      $data = 0;
+      //dd($question);
       if($check_user->count() > 0){
           return redirect()->back()->with('dont_allow','Bạn đã tham gia khảo sát, xin cảm ơn.');
       }else{
@@ -36,11 +41,12 @@ class AnswerController extends Controller
 
               Answer_survey::create([
                   'user_id'=>Auth::id(),
-                  'question_id' => $count,
+                  'question_id' => $question[$data]->id,
                   'survey_id'=>$survey->id,
                   'answer'=>$newValue,
               ]);
               $count++;
+              $data++;
           }
           return redirect()->back()->with('success','Cảm ơn bạn đã tham gia khảo sát.');
       }

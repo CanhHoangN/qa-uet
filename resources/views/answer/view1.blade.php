@@ -18,8 +18,56 @@
 <body>
 <br />
 <div class="container">
-    <h3 align="center">Statistics of survey results "{{\App\Survey::where('id',$id)->value('title')}}" with type "radio"</h3><br />
+    @foreach($list_question_textarea as $key => $question)
+        <h3>Q: {{$question->title}}</h3>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>UserName</th>
+                <th>Email</th>
+                <th>Answer</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($list_answer_text = DB::table('answer_survey')->where('question_id',$question->id)->get() as $key => $value)
+                <tr>
+                    <td>{{$key+1}}</td>
+                    <td>{{DB::table('users')->where('id',$value->user_id)->value('name')}}</td>
+                    <td>{{DB::table('users')->where('id',$value->user_id)->value('email')}}</td>
+                    <td>{{$value->answer}}</td>
+                </tr>
+            @endforeach
 
+            </tbody>
+        </table>
+    @endforeach
+    @foreach($list_question_text as $key => $question)
+        <h3>Q: {{$question->title}}</h3>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>UserName</th>
+                <th>Email</th>
+                <th>Answer</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($list_answer_text = DB::table('answer_survey')->where('question_id',$question->id)->get() as $key => $value)
+                <tr>
+                    <td>{{$key+1}}</td>
+                    <td>{{DB::table('users')->where('id',$value->user_id)->value('name')}}</td>
+                    <td>{{DB::table('users')->where('id',$value->user_id)->value('email')}}</td>
+                    <td>{{$value->answer}}</td>
+                </tr>
+            @endforeach
+
+            </tbody>
+        </table>
+    @endforeach
+
+    <h3 align="center">Statistics of survey results "{{\App\Survey::where('id',$id)->value('title')}}" with type "radio"</h3><br />
     <div class="panel panel-default">
 
         <div class="panel-body" align="center">
@@ -40,7 +88,7 @@
     google.charts.setOnLoadCallback(function () {
         var data{{$key}} = google.visualization.arrayToDataTable(analytics{{$key}});
         var options{{$key}} = {
-            title : 'Percentage: {{$question[$key]->title}} '
+            title : 'Percentage: {{$l[0][0]}} '
         };
         $('.panel-body').append("<div id='pie_chart{{$key}}' style='width:750px; height:450px;'></div>");
         var chart{{$key}} = new google.visualization.PieChart(document.getElementById('pie_chart{{$key}}'));

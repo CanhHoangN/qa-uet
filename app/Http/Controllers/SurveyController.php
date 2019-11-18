@@ -116,10 +116,15 @@ class SurveyController extends Controller
       $q_radio = [];
       $q_radio_1 = [];
       $list_answer_radio = [];
+
+      $list_question_text = Question_survey::where('survey_id',$survey->id)->where('question_type','text')->get();
+      $list_question_textarea = Question_survey::where('survey_id',$survey->id)->where('question_type','textarea')->get();
+      //dd($list_question_text);
+
       foreach ($question as $key => $value){
           if($value->question_type == 'radio'){
               $q_count_radio = [];
-              $q_count_radio[] = ['name','value'];
+              $q_count_radio[] = [$value->title,'value'];
               $q_radio_1[] = [];
 
               foreach ((array) $value->option_name as $key_op => $value_op){
@@ -141,10 +146,10 @@ class SurveyController extends Controller
 
       }
 
-     // dd($list_answer_radio);
+     //dd($list_answer_radio);
      // dd($question);
 
-      return view('answer.view1',compact('list_answer_radio','id','question'));
+      return view('answer.view1',compact('list_answer_radio','id','question','list_question_text','list_question_textarea'));
 
   }
 
