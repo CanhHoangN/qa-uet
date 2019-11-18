@@ -12,6 +12,10 @@
 */
 
 Route::get('/',"PageController@index")->name('home');
+
+// tag
+
+Route::get('/tag/{tag_name}','PageController@tagName')->name('tag.name');
 //Route::get('/login',function);
 // user
 Route::get('/member/{id}',"PageController@profileUser")->name('profile_user');
@@ -31,6 +35,11 @@ Route::get('like/question/{id_question}',"PageController@likeQuestion")->name('l
 Route::get('unlike/question/{id_question}',"PageController@unlikeQuestion")->name('un_like_question');
 Route::get('delete/session/{id}',"PageController@deleteSession")->name('delete_session');
 Auth::routes();
+
+
+Route::group(['middleware' => ['auth']], function () {
+
+});
 
 // survey
 Route::get('/test',function (){

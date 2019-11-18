@@ -19,7 +19,7 @@ class AdminController extends Controller
     {
         if ($request->isMethod('post')) {
             $data = $request->input();
-            if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'admin' => '1'])) {
+            if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'permission' => 'admin'])) {
                 return redirect('/admin/dashboard');
             } else {
                 return redirect('/admin')->with('flash_message_error', 'Invalid Username or Password');
@@ -304,7 +304,7 @@ class AdminController extends Controller
 
     public function editedUser(Request $request, $id)
     {
-        if ($request->isMethod('POST')) 
+        if ($request->isMethod('POST'))
         {
             $data = $request->all();
             $customer = User::find($id);
@@ -334,7 +334,7 @@ class AdminController extends Controller
     public function editedConstraintLB(Request $request)
     {
         $data = $request->all();
-        
+
         $language = Session::get('language');
 
             if ($language == null) {

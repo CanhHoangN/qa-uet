@@ -214,4 +214,10 @@ class PageController extends Controller
        // $user = User::where('id', $id)->get();
         return view('web.user_profile_survey', compact('allsurvey','id'));
     }
+    public function tagName($tag_name){
+
+        $allsession = Session_qa::where('type_session',$tag_name)->get();
+       // dd($allsession);
+        return view('web.tag_name',compact('allsession'));
+    }
 }

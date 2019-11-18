@@ -48,7 +48,7 @@
                     <p>MOST USED TAGS</p>
                     <ul>
                         @foreach($type_sessions as $type)
-                            <li><a href="#">{{$type->type_session}} </a> x {{$type->total}}</li>
+                            <li><a href="{{route('tag.name',$type->type_session)}}">{{$type->type_session}} </a> x {{$type->total}}</li>
                         @endforeach
                     </ul>
                 </div>

@@ -76,41 +76,41 @@
                                 <div class="user-post row">
                                     <img  id="avatar_default" src="{{asset('images/web/avatar_default.png')}}" alt="">
                                     <p id="chutoa"><a href="">{{DB::table('users')->where('id',$su->id_user)->value('name')}}</a></p>
-                                  <!--  <p class="user-badge">Train </p>-->
-                                    <p id="created_at">Posted on {{$su->created_at}} in <a href="{{route('tag.name',$su->type_session)}}">{{$su->type_session}}</a> </p>
+                                    <!--  <p class="user-badge">Train </p>-->
+                                    <p id="created_at">Posted on {{$su->created_at}} in <a href="#">{{$su->type_session}}</a> </p>
 
                                 </div>
                             </div>
                             <div class="col-md-4 view-question">
-                                  <ul class="ul-info">
-                                      <li class="session-views">
-                                          <ul>
-                                              <li id="views">
+                                <ul class="ul-info">
+                                    <li class="session-views">
+                                        <ul>
+                                            <li id="views">
                                                 {{$su->count_views}}
-                                              </li>
-                                              <li class="text-li-info">views</li>
-                                          </ul>
-                                      </li>
-                                      <li class="session-questions">
-                                          <ul>
-                                              <li id="questions">{{DB::table('questions')
+                                            </li>
+                                            <li class="text-li-info">views</li>
+                                        </ul>
+                                    </li>
+                                    <li class="session-questions">
+                                        <ul>
+                                            <li id="questions">{{DB::table('questions')
                                                       ->select(DB::raw('count(*) as total'))
                                                       ->where('id_session',$su->id_session)
                                                       ->value('total')}}
-                                              </li>
-                                              <li class="text-li-info">questions</li>
-                                          </ul>
-                                      </li>
-                                      <li class="session-vote">
-                                          <ul>
-                                              <li id="votes">25</li>
-                                              <li class="text-li-info">votes</li>
-                                          </ul>
-                                      </li>
+                                            </li>
+                                            <li class="text-li-info">questions</li>
+                                        </ul>
+                                    </li>
+                                    <li class="session-vote">
+                                        <ul>
+                                            <li id="votes">25</li>
+                                            <li class="text-li-info">votes</li>
+                                        </ul>
+                                    </li>
 
-                                  </ul>
+                                </ul>
                             </div>
                         </div>
-        @endforeach
-    </div>
+                        @endforeach
+                </div>
 @stop
