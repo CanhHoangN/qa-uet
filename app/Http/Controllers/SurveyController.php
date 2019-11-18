@@ -14,6 +14,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use PhpParser\Node\Expr\Array_;
+use Illuminate\Support\Facades\Gate;
+
 
 class SurveyController extends Controller
 {
@@ -64,14 +66,19 @@ class SurveyController extends Controller
 
   public function create(Request $request)
   {
-    Survey::create([
-       'title'=>$request->title_survey,
-       'description'=>$request->description,
-       'password'=>$request->password,
-        'user_id'=>\Illuminate\Support\Facades\Auth::id()
-    ]);
-
-    return redirect()->route('survey');
+    if (Gate::allows('chutoa')) {
+      Survey::create([
+        'title' => $request->title_survey,
+        'description' => $request->description,
+        'password' => $request->password,
+        'user_id' => \Illuminate\Support\Facades\Auth::id()
+      ]);
+      return redirect()->route('survey');
+    } else {
+      echo "<script>";
+      echo "alert('Không có đủ quyền!');";
+      echo "</script>";
+    }
   }
 
   # retrieve detail page and add questions here

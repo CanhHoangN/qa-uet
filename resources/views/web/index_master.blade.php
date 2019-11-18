@@ -8,12 +8,10 @@
             <div class="ask-question col-md-2">
 
                 <div class="btn-ask-question row">
-                @can('chutoa')
                     <div class="btn-group">
                         <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" id="btn_session"><i class="fas fa-plus"  style="margin-right: 3px"></i>Session</button>
                         <button data-toggle="modal" data-target="#exampleModal1" type="button" class="btn btn-primary" id="btn_survey"><i class="fas fa-plus" style="margin-right: 3px"></i>Survey</button>
                     </div>
-                @endcan
                 </div>
                 <div class="task-list row">
                     <ul>
@@ -51,13 +49,15 @@
                 <div class="hot-question">
                     <p>HOT SESSIONS</p>
                     <ul>
+                        @foreach($hot_sessions as $hot)
                         <li>
                             <a href="#">
                                 <img src="" alt="">
-                                <p>What are the best mobile apps for traveling?</p>
+                                <p>{{$hot->count}}</p>
                             </a>
                         </li>
-                        <li>
+                        @endforeach
+                        <!-- <li>
                             <a href="#">
                                 <img src="" alt="">
                                 <p>Select coordinates which fall within a radius of a central point?</p>
@@ -79,7 +79,7 @@
                             <a href="#"><img src="" alt="">
                                 <p>What are the best mobile apps for traveling?</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
