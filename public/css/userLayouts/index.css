@@ -1276,3 +1276,14 @@ li.session-questions {
 button.btn.btn-danger.edit {
     padding: 0px 20px;
 }
+.register input[type="submit"] {
+    /* padding: 12px; */
+    display: inline-block;
+    background: #6dabe4;
+    color: #fff;
+    border-bottom: none;
+    width: auto;
+    padding: 9px 39px;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+}
