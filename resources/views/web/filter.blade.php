@@ -5,7 +5,7 @@
         </div>
         <div class="col-md-8 filter">
             <div class="el-filter">
-                <label>Filter session by:   </label>
+              <!--  <label>Filter session by:   </label>
                 <label id="category">
                     <select class="form-control" id="sel1" name="sellist1">
                         <option><a href="">default</a></option>
@@ -14,7 +14,7 @@
                         <option><a href="">question asc </a></option>
                         <option><a href="">question desc </a></option>
                     </select>
-                </label>
+                </label>-->
 
             </div>
         </div>
@@ -30,15 +30,15 @@
         </div>
         <div class="col-md-8 amount-question">
             <div class="el-amount-question">
-                <label>Questions Per Page: </label>
+
                 <label id="amount">
                         <div class="form-group">
-                            <select class="form-control" id="sel3" name="sellist3">
+                         <!--   <select class="form-control" id="sel3" name="sellist3">
                                 <option><a href="#">all</a></option>
                                 <option><a href="#">5</a></option>
                                 <option><a href="#">10</a></option>
                                 <option><a href="#">15</a></option>
-                            </select>
+                            </select>-->
                         </div>
                         <!--  <button type="submit" class="btn btn-primary">Submit</button>-->
                 </label>

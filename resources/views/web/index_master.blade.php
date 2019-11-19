@@ -14,11 +14,11 @@
                     </div>
                 </div>
                 <div class="task-list row">
-                    <ul>
+                   <!-- <ul>
                         <li><a href="#"><i class="fa fa-question-circle"></i> Question</a></li>
                         <li><a href="#"><i class="fa fa-tags"></i> Tags</a></li>
                         <li><a href="#"><i class="fa fa-users"></i> Users</a></li>
-                    </ul>
+                    </ul>-->
                 </div>
             </div>
             <div class="list-question col-md-8">
@@ -166,10 +166,10 @@
                                     <textarea name="description" id="des-session" rows="4" required minlength="6" maxlength="100"></textarea>
                                 </div>
                             </div>
-                            <div class="row el-form">
+                           <!-- <div class="row el-form">
                                 <div class="col-md-5"><strong>Mật khẩu tham gia</strong></div>
                                 <div class="col-md-7"><input class=form-control type="password" name="password_survey" placeholder="Công khai: đễ trống"></div>
-                            </div>
+                            </div>-->
                             <div class="row">
                                 <div class="col-md-5"><strong>Thời gian tồn tại</strong></div>
                                 <div class='col-sm-7'>
@@ -223,6 +223,9 @@
     @endif
     @if(session('emptySearch'))
     alert('Không tìm thấy kết quả nào.');
+    @endif
+    @if(session('permission'))
+    alert('Bạn không đủ quyền để thực hiện.');
     @endif
     $(document).ready(function() {
         //$('input[name=session]').prop("disabled",true);

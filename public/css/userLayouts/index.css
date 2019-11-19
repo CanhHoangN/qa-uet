@@ -312,7 +312,7 @@ ul.state-question {
 }
 
 .state-question li:hover {
-    border-bottom: 5px solid orange;
+
 }
 
 .state-question li a {
@@ -352,6 +352,7 @@ img#avatar_default {
 
 .row.down-amount {
     padding: 0;
+    padding-bottom: 18px;
     border-bottom: 1px solid #aab6ca;
     border-right: 1px solid #aab6ca;
     color: #6F7D95;
@@ -454,7 +455,7 @@ p.user-badge {
 
     background-color: #eceeef;
     color: #FFFFFF;
-    border-left: 5px solid orange;
+
 }
 
 

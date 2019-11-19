@@ -70,14 +70,12 @@ class SurveyController extends Controller
       Survey::create([
         'title' => $request->title_survey,
         'description' => $request->description,
-        'password' => $request->password,
-        'user_id' => \Illuminate\Support\Facades\Auth::id()
+        'user_id' => \Illuminate\Support\Facades\Auth::id(),
+        'deleted_at'=>$request->time_survey,
       ]);
       return redirect()->route('survey');
     } else {
-      echo "<script>";
-      echo "alert('Không có đủ quyền!');";
-      echo "</script>";
+      return redirect()->back()->with('permission','Bạn không đủ quyền để thực hiện.');
     }
   }
 

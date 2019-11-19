@@ -20,9 +20,13 @@ class FormSubmitted implements ShouldBroadcast
      * @return void
      */
     public $text;
-    public function __construct($text)
+    public $name_cmt;
+    public function __construct($text,$name_cmt)
     {
+
+
         $this->text=$text;
+        $this->name_cmt = $name_cmt;
     }
 
     /**

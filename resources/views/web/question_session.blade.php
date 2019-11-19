@@ -66,6 +66,7 @@
                                 <form id="send_comment" action="{{route('add_comment',$id_question)}}" method="post">
                                     @csrf
                                     <input class="form-control" type="text" placeholder="Viết nhận xét..." name="comment_question">
+                                    <input type="text" name="name_cmt" value="{{\Illuminate\Support\Facades\Auth::user()->name}}" hidden>
                                 </form>
                             </div>
                         </div>
@@ -120,6 +121,7 @@
                                                 <form action="{{route('add_comment_in_comment',[$id_question,$comment->id_comment])}}" method="post">
                                                     @csrf
                                                     <input class="form-control" type="text" name="comment_rep" placeholder="viết phản hồi...">
+
                                                 </form>
 
                                             </div>
@@ -176,6 +178,7 @@
                                             <form action="{{route('add_comment_in_comment',[$id_question,$comment->id_comment])}}" method="post">
                                                 @csrf
                                                 <input class="form-control" type="text" name="comment_rep" placeholder="viết phản hồi...">
+
                                             </form>
 
                                         </div>
@@ -228,7 +231,7 @@
             const string = JSON.stringify(data);
             const obj = JSON.parse(string);
             @if(\Illuminate\Support\Facades\Auth::check())
-            phantuchon.append("<div class='list-comment row'><div class='col-md-1 avatar-people'><img src='{{asset('images/web/profile.png')}}'></div><div class='col-md-10 el-comment'><span style='color: #385898'><a href='{{route('profile_user',\Illuminate\Support\Facades\Auth::id())}}' >{{\Illuminate\Support\Facades\Auth::user()->name}}</a></span><b> "+obj.text+"</b><ul class='like-comment-question'><li class='like-comment'><a>Thích</a></li><li class='res-comment'>Trả lời</li></ul></div></div>");
+            phantuchon.append("<div class='list-comment row'><div class='col-md-1 avatar-people'><img src='{{asset('images/web/profile.png')}}'></div><div class='col-md-10 el-comment'><span style='color: #385898'><a href='{{route('profile_user',\Illuminate\Support\Facades\Auth::id())}}'>"+obj.name_cmt+"</a></span><b> "+obj.text+"</b><ul class='like-comment-question'><li class='like-comment'><a href='#'>Thích</a></li><li class='res-comment'>Trả lời <i style='margin-left:3px' class=\"fas fa-check-circle\"></i></li></ul></div></div>");
             @endif
         });
     </script>

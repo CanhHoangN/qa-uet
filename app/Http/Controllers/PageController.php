@@ -95,9 +95,7 @@ class PageController extends Controller
                 return redirect()->back();
             }
         } else {
-            echo "<script>";
-            echo "alert('Không có đủ quyền!');";
-            echo "</script>";
+           return redirect()->back()->with('permission','Bạn không đủ quyền để thực hiện.');
         }
     }
     public function showSession($id)
@@ -181,7 +179,8 @@ class PageController extends Controller
             ]);
 
             $text = request()->comment_question;
-            event(new FormSubmitted($text));
+            $user_cmt = request()->name_cmt;
+            event(new FormSubmitted($text, $user_cmt));
             return redirect()->back();
         }
     }
