@@ -15,14 +15,14 @@
                                 </div>
                                 <div class="related-content row">
                                     <ul class="question-tag">
-                                        <li><a href="#">aas</a></li>
+                                      <!--  <li><a href="#">aas</a></li>-->
                                     </ul>
                                 </div>
                                 <div class="user-post row">
                                     <img  id="avatar_default" src="{{asset('images/web/avatar_default.png')}}" alt="">
                                     <p id="chutoa"><a href="{{route('profile_user',$su->user_id)}}">{{DB::table('users')->where('id',$su->user_id)->value('name')}}</a></p>
                                     <!--  <p class="user-badge">Train </p>-->
-                                    <p id="created_at">Asked on {{$su->created_at}} in <a href="#">aaaa</a> </p>
+                                    <p id="created_at">Asked on {{$su->created_at}}</p>
 
                                 </div>
                             </div>
