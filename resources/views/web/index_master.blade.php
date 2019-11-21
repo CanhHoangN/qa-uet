@@ -170,12 +170,12 @@
                                 <div class="col-md-5"><strong>Mật khẩu tham gia</strong></div>
                                 <div class="col-md-7"><input class=form-control type="password" name="password_survey" placeholder="Công khai: đễ trống"></div>
                             </div>-->
-                            <div class="row">
+                          <!--  <div class="row">
                                 <div class="col-md-5"><strong>Thời gian tồn tại</strong></div>
                                 <div class='col-sm-7'>
                                     <input placeholder="Để trống: nếu muốn tồn tại đến khi xoá" type='text' class="form-control" id='datetimepicker5' name="time_survey" />
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="row">
                                 <div class="col-md-9"></div>
                                 <div class="col-md-3">

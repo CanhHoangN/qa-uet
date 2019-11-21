@@ -29,10 +29,10 @@
 
         <div class="search-create-qa row">
             <div class="col-md-3 search-question">
-                <form action="#">
+               <!-- <form action="#">
                     <input type="text" placeholder="search" name="search-qa">
                     <input type="submit" value="search">
-                </form>
+                </form>-->
             </div>
             <div style="padding: 0px;margin: 0px" class="col-md-6"></div>
             <div class="col-md-3 create-qa">
@@ -74,7 +74,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Đặt câu hỏi</h5>
+                    <h4 class="modal-title" id="exampleModalLabel">Đặt câu hỏi</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -82,7 +82,7 @@
                 <div class="modal-body">
                     <form action="{{route("add_qa_session",$id)}}" method="post">
                         @csrf
-                        <input class="form-control" type="text" name="title_question" placeholder="Nội dung câu hỏi..."><br>
+                        <textarea class="form-control" type="text" name="title_question" placeholder="Nội dung câu hỏi..."></textarea><br>
                         @if(!\Illuminate\Support\Facades\Auth::check())
                             <span>Đặt chế độ ẩn danh: </span><input id="toggle-event" type="checkbox" name="post_person" data-size="mini" data-onstyle="danger" data-toggle="toggle" value="off"><br>
                         @else

@@ -66,7 +66,9 @@
                                 <form id="send_comment" action="{{route('add_comment',$id_question)}}" method="post">
                                     @csrf
                                     <input class="form-control" type="text" placeholder="Viết nhận xét..." name="comment_question">
+                                    @if(\Illuminate\Support\Facades\Auth::check())
                                     <input type="text" name="name_cmt" value="{{\Illuminate\Support\Facades\Auth::user()->name}}" hidden>
+                                    @endif
                                 </form>
                             </div>
                         </div>
@@ -192,6 +194,27 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa nội dụng:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route("edit_session",$session[0]->id_session)}}" method="post">
+                        @csrf
+                        <input class="form-control" placeholder="Tiêu đề..." type="text" name="title_edit" minlength="6" maxlength="60"><br>
+                        <input class="form-control" placeholder="Mô tả..." type="text" name="desc_edit" minlength="6" maxlength="60">
+                        <input  type="submit" class="btn btn-primary" value="submit">
+                    </form>
+                </div>
+
+            </div>
         </div>
     </div>
 
