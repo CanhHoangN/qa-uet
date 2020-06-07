@@ -31,17 +31,18 @@
                                       <li class="session-views">
                                           <ul>
                                               <li id="views">
-                                                {{$su->count_views}}
+                                                <p>{{$su->count_views}}</p>
                                               </li>
                                               <li class="text-li-info">views</li>
                                           </ul>
                                       </li>
                                       <li class="session-questions">
                                           <ul>
-                                              <li id="questions">{{DB::table('questions')
-                                                      ->select(DB::raw('count(*) as total'))
-                                                      ->where('id_session',$su->id_session)
-                                                      ->value('total')}}
+                                              <li id="questions">
+                                                  <p>{{DB::table('questions')
+                                                    ->select(DB::raw('count(*) as total'))
+                                                    ->where('id_session',$su->id_session)
+                                                    ->value('total')}}</p>
                                               </li>
                                               <li class="text-li-info">questions</li>
                                           </ul>
